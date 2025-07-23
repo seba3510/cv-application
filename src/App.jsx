@@ -8,27 +8,58 @@ import {
 
 //================================================================
 
+import {
+	Form
+} from "./components/organisms/Form.jsx";
+
+//================================================================
+
+import {
+	Container
+} from "./components/molecules/Container.jsx";
+
+//================================================================
+
+import {
+	Input
+} from "./components/atoms/Input.jsx";
+
+//================================================================
+
+import {
+	Label
+} from "./components/atoms/Label.jsx";
+
+//================================================================
+
+import {
+	FormControl
+} from "./components/organisms/FormControl.jsx";
+
+//================================================================
+
 function App() {
 
 	const [
 		form,
 		setForm
-	] = useState({
-		fullName: "",
-		email: "",
-		phoneNumber: "",
-		school: "",
-		major: "",
-		date: "",
-		company: "",
-		position: "",
-		responsibilities: "",
-		startDate: "",
-		endDate: ""
-	});
+	] = useState(
+		{
+			id: crypto.randomUUID(),
+			fullName: "",
+			email: "",
+			phoneNumber: "",
+			school: "",
+			major: "",
+			date: "",
+			company: "",
+			position: "",
+			responsibilities: "",
+			startDate: "",
+			endDate: ""
+		});
 
 	//================================================================
-
 
 	function handleInputChange(event) {
 
@@ -37,7 +68,7 @@ function App() {
 
 		const inputValue =
 			event.target
-				.value.trim();
+				.value;
 
 		console.log(
 			inputValue
@@ -48,38 +79,53 @@ function App() {
 			[formControl]: inputValue
 		});
 
-	} // handleTextChange()
+
+	} // handleInputChange()
 
 	//================================================================
+
+	function submitForm(event) {
+
+		return;
+
+	} // submitForm()
+
+	//==================================================================
 
 	return (
 
 		<>
 			<aside>
-				<form>
-					<section className="generalInfo">
-						<div className="formControl">
-							<label htmlFor="fullName">Name</label>
-							<input
-								type="text"
-								value={form.fullName}
-								id="fullName"
-								name="fullName"
-								onChange={handleInputChange}
-							/>
-						</div>
+				<Form onSubmit={submitForm}>
+					<FormControl
+						type={"text"}
+						id={"fullName"}
+						name={"fullName"}
+						labelText={"Full Name"}
+						value={form.fullName}
+						onChange={handleInputChange}
+					/>
 
-						<div className="formControl">
-							<label htmlFor="email">Email</label>
-							<input
-								type="email"
-								value={form.email}
-								id="email"
-								onChange={handleInputChange}
-							/>
-						</div>
-					</section>
-				</form>
+					<FormControl
+						type={"email"}
+						id={"email"}
+						name={"email"}
+						labelText={"Email"}
+						value={form.email}
+						onChange={handleInputChange}
+					/>
+
+					<FormControl
+						type={"tel"}
+						id={"phoneNumber"}
+						name={"phoneNumber"}
+						labelText={"phoneNumber"}
+						value={form.phoneNumber}
+						onChange={handleInputChange}
+					/>
+
+
+				</Form>
 			</aside>
 		</>
 

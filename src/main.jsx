@@ -1,12 +1,12 @@
 import {
 	StrictMode
-} from 'react';
+} from "react";
 
 //==================================================================
 
 import {
 	createRoot
-} from 'react-dom/client';
+} from "react-dom/client";
 
 //==================================================================
 
