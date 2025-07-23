@@ -13,66 +13,42 @@ function App() {
 	const [
 		form,
 		setForm
-	] = useState([
-		{
-			fullName: "",
-			email: "",
-			phoneNumber: ""
-		},
-		{
-			school: "",
-			major: "",
-			date: ""
-		},
-		{
-			company: "",
-			position: "",
-			responsibilities: "",
-			startDate: "",
-			endDate: ""
-		}
-	]);
+	] = useState({
+		fullName: "",
+		email: "",
+		phoneNumber: "",
+		school: "",
+		major: "",
+		date: "",
+		company: "",
+		position: "",
+		responsibilities: "",
+		startDate: "",
+		endDate: ""
+	});
 
 	//================================================================
 
 
-	function handleGeneralInfoChange(event) {
+	function handleInputChange(event) {
 
-		const input =
-			event.target;
+		const formControl =
+			event.target.name;
 
-		const value =
-			input.value.trim();
+		const inputValue =
+			event.target
+				.value.trim();
 
-		setForm(
-			(prev) => [
-				{
-					...prev,
-					fullName: value
-				}
-			]);
+		console.log(
+			inputValue
+		);
+
+		setForm({
+			...form,
+			[formControl]: inputValue
+		});
 
 	} // handleTextChange()
-
-	//================================================================
-
-	function handleEmailChange(event) {
-
-		const textBox =
-			event.target;
-
-		const emailInput =
-			textBox.value.trim();
-
-		setForm((prev) => [
-			{
-				.
-					email: emailInput
-			}
-		])
-
-
-	} // handleEmailChange()
 
 	//================================================================
 
@@ -86,10 +62,10 @@ function App() {
 							<label htmlFor="fullName">Name</label>
 							<input
 								type="text"
-								value={form[0].fullName}
+								value={form.fullName}
 								id="fullName"
 								name="fullName"
-								onChange={handleGeneralInfoChange}
+								onChange={handleInputChange}
 							/>
 						</div>
 
@@ -97,9 +73,9 @@ function App() {
 							<label htmlFor="email">Email</label>
 							<input
 								type="email"
-								value={form[0].email}
+								value={form.email}
 								id="email"
-								onChange={handleEmailChange}
+								onChange={handleInputChange}
 							/>
 						</div>
 					</section>
