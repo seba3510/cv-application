@@ -234,19 +234,20 @@ function App() {
 	return (
 
 		<aside>
-			<Form onSubmit={submitForm}>
+			<form>
 
-				{displayGeneralInfo()}
+				<section className="personalDetails">
+					<header>
+						<h1>Personal Details</h1>
+						<button type="button">
+							^
+						</button>
 
-				{displayEducation()}
 
-				{displayJobExperience()}
+					</header>
+				</section>
 
-				<Button type={"submit"}>
-					Submit
-				</Button>
-
-			</Form>
+			</form>
 		</aside>
 
 	);
