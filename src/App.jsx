@@ -140,6 +140,48 @@ function App() {
 
 				<FormControl
 					type={"text"}
+					id={"major"}
+					name={"major"}
+					labelText={"Major"}
+					value={form.major}
+					onChange={handleInputChange}
+				/>
+
+				<FormControl
+					type={"text"}
+					id={"dateOfStudy"}
+					name={"dateOfStudy"}
+					labelText={"Date of Study"}
+					value={form.date}
+					onChange={handleInputChange}
+				/>
+
+			</Section>
+
+		);
+
+	} // displayEducation()
+
+	//==================================================================
+
+	function displayJobExperience() {
+
+		return (
+			<Section className={"education"}>
+
+				<h1>Job Experience</h1>
+
+				<FormControl
+					type={"text"}
+					id={"companyName"}
+					name={"companyName"}
+					labelText={"Company"}
+					value={form.company}
+					onChange={handleInputChange}
+				/>
+
+				<FormControl
+					type={"text"}
 					id={"positionTitle"}
 					name={"positionTitle"}
 					labelText={"Position"}
@@ -174,16 +216,13 @@ function App() {
 					onChange={handleInputChange}
 				/>
 
-
 			</Section>
 
 		);
 
-	} // displayEducation()
+	} // displayJobExperience()
 
 	//==================================================================
-
-
 
 	return (
 
@@ -193,6 +232,8 @@ function App() {
 				{displayGeneralInfo()}
 
 				{displayEducation()}
+
+				{displayJobExperience()}
 
 			</Form>
 		</aside>
