@@ -234,9 +234,9 @@ function App() {
 	return (
 
 		<aside>
-			<form>
+			<Form>
 
-				<section className="personalDetails">
+				<Section className="personalDetails">
 					<header>
 						<h1>Personal Details</h1>
 						<button type="button">
@@ -245,9 +245,9 @@ function App() {
 
 
 					</header>
-				</section>
+				</Section>
 
-			</form>
+			</Form>
 		</aside>
 
 	);
