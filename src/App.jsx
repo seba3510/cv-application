@@ -26,6 +26,12 @@ import {
 
 //================================================================
 
+import {
+	Button
+} from "./components/atoms/Button.jsx";
+
+//==============================================================
+
 function App() {
 
 	const [
@@ -33,7 +39,6 @@ function App() {
 		setForm
 	] = useState(
 		{
-			id: crypto.randomUUID(),
 			fullName: "",
 			email: "",
 			phoneNumber: "",
@@ -74,7 +79,9 @@ function App() {
 
 	function submitForm(event) {
 
-		return;
+		event.preventDefault();
+
+		alert("Hello, World!");
 
 	} // submitForm()
 
@@ -83,7 +90,7 @@ function App() {
 	function displayGeneralInfo() {
 
 		return (
-			<Section className={"generalInfo"}>
+			<Section className={"section"}>
 
 				<h1>General Info</h1>
 
@@ -125,7 +132,7 @@ function App() {
 
 
 		return (
-			<Section className={"education"}>
+			<Section className={"section"}>
 
 				<h1>Education</h1>
 
@@ -167,7 +174,7 @@ function App() {
 	function displayJobExperience() {
 
 		return (
-			<Section className={"education"}>
+			<Section className={"section"}>
 
 				<h1>Job Experience</h1>
 
@@ -234,6 +241,10 @@ function App() {
 				{displayEducation()}
 
 				{displayJobExperience()}
+
+				<Button type={"submit"}>
+					Submit
+				</Button>
 
 			</Form>
 		</aside>
