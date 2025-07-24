@@ -1,6 +1,5 @@
 function Input({
 	type,
-	value,
 	onChange,
 	name,
 	id
@@ -9,7 +8,6 @@ function Input({
 	return (
 		<input
 			type={type}
-			value={value}
 			name={name}
 			id={id}
 			onChange={onChange}

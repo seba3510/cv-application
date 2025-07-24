@@ -1,7 +1,14 @@
-#root {
+:root {
+	--btn-cursor: pointer;
+	--flex-display: flex;
+	--flex-row: row;
+	--flex-column: column;
+}
+
+.wrapper {
 	display: grid;
 	/* grid-template-columns: minmax(100px, 300px) 1fr; */
-	grid-template-columns: minmax(200px, 500px) 1fr;
+	grid-template-columns: minmax(100px, 500px) 1fr;
 	grid-template-areas: "aside main";
 }
 
@@ -11,8 +18,8 @@ body {
 
 aside,
 form {
-	display: flex;
-	flex-direction: column;
+	display: var(--flex-display);
+	flex-direction: var(--flex-column);
 }
 
 aside {
@@ -30,17 +37,16 @@ form {
 }
 
 form .personalDetails {
-	display: flex;
-	flex-direction: column;
+	display: var(--flex-display);
+	flex-direction: var(--flex-column);
 	justify-content: center;
 	align-items: center;
-	border: 3px solid red;
 	padding-bottom: 1em;
 }
 
 form>.personalDetails>header {
-	display: flex;
-	flex-direction: row;
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
 	justify-content: center;
 	align-items: center;
 }
@@ -48,5 +54,26 @@ form>.personalDetails>header {
 form>.personalDetails button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
-	cursor: pointer;
+	cursor: var(--btn-cursor);
+}
+
+button[type="submit"] {
+	align-self: center;
+	padding: 0.3em;
+	cursor: var(--btn-cursor);
+}
+
+main>header {
+	background-color: rgb(14 55 78);
+	color: white;
+}
+
+aside .btnsContainer:last-child {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	border: 3px solid red;
+	cursor: var(--btn-cursor);
 }

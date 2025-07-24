@@ -34,13 +34,37 @@ import {
 
 import {
 	Sidebar
-} from "./components/atoms/Sidebar.jsx";
+} from "./components/organisms/Sidebar.jsx";
 
 //==============================================================
 
 import {
 	FormControl
 } from "./components/organisms/FormControl.jsx";
+
+//==============================================================
+
+import {
+	Container
+} from "./components/molecules/Container.jsx";
+
+//==============================================================
+
+import {
+	Resume
+} from "./components/organisms/Resume.jsx";
+
+//==============================================================
+
+import {
+	HeadingOne
+} from "./components/atoms/HeadingOne.jsx";
+
+//==============================================================
+
+import {
+	Paragraph
+} from "./components/atoms/Paragraph.jsx";
 
 //==============================================================
 
@@ -75,6 +99,15 @@ function App() {
 
 	//==================================================================
 
+	const [
+		showResume,
+		setShowResume
+	] = useState(
+		false
+	);
+
+	//==================================================================
+
 	function toggleDisplay() {
 
 		const isShown =
@@ -102,7 +135,9 @@ function App() {
 			"The section was hidden."
 		);
 
-	} // handleClick()
+		return;
+
+	} // toggleDisplay()
 
 	//==================================================================
 
@@ -161,28 +196,133 @@ function App() {
 
 	//==================================================================
 
+	function submitForm(event) {
 
+		try {
+
+			event.preventDefault();
+
+			const inputField =
+				event.target.name;
+
+			const inputValue =
+				event.target.value
+
+			setForm({
+				...form,
+				[inputField]: inputValue
+			});
+
+			const formElem =
+				event.target;
+
+			console.log(
+				formElem
+			);
+
+
+			setShowResume(
+				true
+			);
+
+			formElem.reset();
+
+			formElem[1].disabled =
+				true;
+
+			formElem[2].disabled =
+				true;
+
+			formElem[3].disabled =
+				true;
+
+
+
+			console.log("Input Values Cleared..");
+
+			console.log(form);
+
+			console.log(formElem)
+
+
+		} // try
+
+		catch (error) {
+
+			alert(error);
+
+		} // catch
+
+	} // submitForm()
+
+	//==================================================================
+
+	function displayResume() {
+
+		return (
+			<Resume>
+				<Header>
+					<HeadingOne>
+						{form.fullName}
+					</HeadingOne>
+
+					<Container>
+						<Paragraph>
+							{form.email}
+						</Paragraph>
+
+						<Paragraph>
+							{form.phoneNumber}
+						</Paragraph>
+					</Container>
+				</Header>
+			</Resume>
+		);
+
+	} // displayResume()
+
+	//==================================================================
 
 	return (
 
-		<Sidebar>
-			<Form>
+		<Container className={"wrapper"}>
 
-				<Section className="personalDetails">
-					<Header>
-						<h1>Personal Details</h1>
-						<Button type="button" onClick={toggleDisplay}>
-							^
+			<Sidebar>
+				<Form onSubmit={submitForm}>
+
+					<Section className="personalDetails">
+						<Header>
+							<HeadingOne>Personal Details</HeadingOne>
+							<Button type="button" onClick={toggleDisplay}>
+								^
+							</Button>
+						</Header>
+
+						{(toggle) &&
+							displayPersonalDetails()
+						}
+					</Section>
+
+					<Container className={"btnsContainer"}>
+
+						<Button type={"button"}>
+							Clear Resume
 						</Button>
-					</Header>
 
-					{(toggle) &&
-						displayPersonalDetails()
-					}
-				</Section>
-			</Form>
-		</Sidebar>
+						<Button type={"submit"}>
+							Save
+						</Button>
 
+					</Container>
+
+				</Form>
+
+			</Sidebar>
+
+			{(showResume) &&
+				displayResume()}
+
+		</Container>
 	);
 
 } // App()

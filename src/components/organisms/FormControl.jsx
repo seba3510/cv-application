@@ -21,7 +21,6 @@ function FormControl({
 	type,
 	id,
 	name,
-	value,
 	onChange
 }) {
 
@@ -36,7 +35,6 @@ function FormControl({
 					type={type}
 					id={id}
 					name={name}
-					value={value}
 					onChange={onChange}
 				/>
 			</Container>
