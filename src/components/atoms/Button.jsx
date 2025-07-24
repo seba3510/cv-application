@@ -1,10 +1,11 @@
 function Button({
 	type,
-	children
+	children,
+	onClick
 }) {
 
 	return (
-		<button type={type}>
+		<button type={type} onClick={onClick}>
 			{children}
 		</button>
 	);

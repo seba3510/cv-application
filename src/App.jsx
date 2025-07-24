@@ -15,12 +15,6 @@ import {
 //================================================================
 
 import {
-	FormControl
-} from "./components/organisms/FormControl.jsx";
-
-//================================================================
-
-import {
 	Section
 } from "./components/organisms/Section.jsx";
 
@@ -29,6 +23,24 @@ import {
 import {
 	Button
 } from "./components/atoms/Button.jsx";
+
+//==============================================================
+
+import {
+	Header
+} from "./components/atoms/Header.jsx";
+
+//==============================================================
+
+import {
+	Sidebar
+} from "./components/atoms/Sidebar.jsx";
+
+//==============================================================
+
+import {
+	FormControl
+} from "./components/organisms/FormControl.jsx";
 
 //==============================================================
 
@@ -47,59 +59,81 @@ function App() {
 			date: "",
 			company: "",
 			position: "",
-			responsibilities: "",
+			responsibilities: [],
 			startDate: "",
 			endDate: ""
 		});
 
-	//================================================================
+	//==================================================================
 
-	function handleInputChange(event) {
-
-		const formControl =
-			event.target.name;
-
-		const inputValue =
-			event.target
-				.value;
-
-		console.log(
-			inputValue
-		);
-
-		setForm({
-			...form,
-			[formControl]: inputValue
-		});
-
-
-	} // handleInputChange()
-
-	//================================================================
-
-	function submitForm(event) {
-
-		event.preventDefault();
-
-		alert("Hello, World!");
-
-	} // submitForm()
+	const [
+		toggle,
+		setToggle
+	] = useState(
+		false
+	);
 
 	//==================================================================
 
-	function displayGeneralInfo() {
+	function toggleDisplay() {
+
+		const isShown =
+			toggle;
+
+		if (!isShown) {
+
+			setToggle(
+				true
+			);
+
+			console.log(
+				"Section displayed."
+			);
+
+			return;
+
+		} // if
+
+		setToggle(
+			false
+		);
+
+		console.log(
+			"The section was hidden."
+		);
+
+	} // handleClick()
+
+	//==================================================================
+
+	function handleInputChange(event) {
+
+		const inputField =
+			event.target.name;
+
+		const inputValue =
+			event.target.value;
+
+		setForm({
+			...form,
+			[inputField]: inputValue
+		});
+
+	} // handleInputChange()
+
+	//==================================================================
+
+	function displayPersonalDetails() {
 
 		return (
-			<Section className={"section"}>
 
-				<h1>General Info</h1>
-
+			<Section className={"formControls"}>
 				<FormControl
 					type={"text"}
 					id={"fullName"}
 					name={"fullName"}
-					labelText={"Full Name"}
 					value={form.fullName}
+					labelText={"Full Name"}
 					onChange={handleInputChange}
 				/>
 
@@ -107,8 +141,8 @@ function App() {
 					type={"email"}
 					id={"email"}
 					name={"email"}
-					labelText={"Email"}
 					value={form.email}
+					labelText={"Email"}
 					onChange={handleInputChange}
 				/>
 
@@ -116,139 +150,38 @@ function App() {
 					type={"tel"}
 					id={"phoneNumber"}
 					name={"phoneNumber"}
-					labelText={"Phone Number"}
 					value={form.phoneNumber}
+					labelText={"Phone Number"}
 					onChange={handleInputChange}
 				/>
 			</Section>
-
 		);
 
-	} // displayGeneralInfo()
+	} // displayPersonalDetails()
 
 	//==================================================================
 
-	function displayEducation() {
 
-
-		return (
-			<Section className={"section"}>
-
-				<h1>Education</h1>
-
-				<FormControl
-					type={"text"}
-					id={"schoolName"}
-					name={"schoolName"}
-					labelText={"School"}
-					value={form.school}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"text"}
-					id={"major"}
-					name={"major"}
-					labelText={"Major"}
-					value={form.major}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"text"}
-					id={"dateOfStudy"}
-					name={"dateOfStudy"}
-					labelText={"Date of Study"}
-					value={form.date}
-					onChange={handleInputChange}
-				/>
-
-			</Section>
-
-		);
-
-	} // displayEducation()
-
-	//==================================================================
-
-	function displayJobExperience() {
-
-		return (
-			<Section className={"section"}>
-
-				<h1>Job Experience</h1>
-
-				<FormControl
-					type={"text"}
-					id={"companyName"}
-					name={"companyName"}
-					labelText={"Company"}
-					value={form.company}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"text"}
-					id={"positionTitle"}
-					name={"positionTitle"}
-					labelText={"Position"}
-					value={form.position}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"text"}
-					id={"responsibilities"}
-					name={"responsibilities"}
-					labelText={"Responsibilities"}
-					value={form.responsibilities}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"text"}
-					id={"startDate"}
-					name={"startDate"}
-					labelText={"Start Date"}
-					value={form.startDate}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"text"}
-					id={"endDate"}
-					name={"endDate"}
-					labelText={"End Date"}
-					value={form.endDate}
-					onChange={handleInputChange}
-				/>
-
-			</Section>
-
-		);
-
-	} // displayJobExperience()
-
-	//==================================================================
 
 	return (
 
-		<aside>
+		<Sidebar>
 			<Form>
 
 				<Section className="personalDetails">
-					<header>
+					<Header>
 						<h1>Personal Details</h1>
-						<button type="button">
+						<Button type="button" onClick={toggleDisplay}>
 							^
-						</button>
+						</Button>
+					</Header>
 
-
-					</header>
+					{(toggle) &&
+						displayPersonalDetails()
+					}
 				</Section>
-
 			</Form>
-		</aside>
+		</Sidebar>
 
 	);
 

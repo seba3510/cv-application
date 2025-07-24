@@ -48,4 +48,5 @@ form>.personalDetails>header {
 form>.personalDetails button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
+	cursor: pointer;
 }
