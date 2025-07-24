@@ -20,9 +20,15 @@ aside {
 }
 
 form,
-.formControl {
+.generalInfo,
+.education {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.generalInfo,
+.education {
+	gap: 10px;
 }

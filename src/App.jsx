@@ -121,6 +121,69 @@ function App() {
 
 	//==================================================================
 
+	function displayEducation() {
+
+
+		return (
+			<Section className={"education"}>
+
+				<h1>Education</h1>
+
+				<FormControl
+					type={"text"}
+					id={"schoolName"}
+					name={"schoolName"}
+					labelText={"School"}
+					value={form.school}
+					onChange={handleInputChange}
+				/>
+
+				<FormControl
+					type={"text"}
+					id={"positionTitle"}
+					name={"positionTitle"}
+					labelText={"Position"}
+					value={form.position}
+					onChange={handleInputChange}
+				/>
+
+				<FormControl
+					type={"text"}
+					id={"responsibilities"}
+					name={"responsibilities"}
+					labelText={"Responsibilities"}
+					value={form.responsibilities}
+					onChange={handleInputChange}
+				/>
+
+				<FormControl
+					type={"text"}
+					id={"startDate"}
+					name={"startDate"}
+					labelText={"Start Date"}
+					value={form.startDate}
+					onChange={handleInputChange}
+				/>
+
+				<FormControl
+					type={"text"}
+					id={"endDate"}
+					name={"endDate"}
+					labelText={"End Date"}
+					value={form.endDate}
+					onChange={handleInputChange}
+				/>
+
+
+			</Section>
+
+		);
+
+	} // displayEducation()
+
+	//==================================================================
+
+
 
 	return (
 
@@ -128,6 +191,8 @@ function App() {
 			<Form onSubmit={submitForm}>
 
 				{displayGeneralInfo()}
+
+				{displayEducation()}
 
 			</Form>
 		</aside>

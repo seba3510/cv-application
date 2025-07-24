@@ -26,18 +26,21 @@ function FormControl({
 }) {
 
 	return (
-		<Container className={"formControl"}>
+		<>
 			<Label htmlFor={name}>
 				{labelText}
 			</Label>
-			<Input
-				type={type}
-				id={id}
-				name={name}
-				value={value}
-				onChange={onChange}
-			/>
-		</Container>
+
+			<Container className={"formControl"}>
+				<Input
+					type={type}
+					id={id}
+					name={name}
+					value={value}
+					onChange={onChange}
+				/>
+			</Container>
+		</>
 	);
 
 } // FormControl()
