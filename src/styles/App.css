@@ -12,6 +12,17 @@ aside {
 	grid-area: aside;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 	height: 100vh;
 	background-color: rgba(67, 53, 175, 0.627);
+	padding: 1em;
+}
+
+form,
+.formControl {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }

@@ -26,7 +26,7 @@ function FormControl({
 }) {
 
 	return (
-		<Container>
+		<Container className={"formControl"}>
 			<Label htmlFor={name}>
 				{labelText}
 			</Label>
