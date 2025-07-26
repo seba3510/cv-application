@@ -34,7 +34,8 @@ form {
 	padding: 1em;
 }
 
-form .personalDetails {
+form .personalDetails,
+form .education {
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
 	justify-content: center;
@@ -42,7 +43,8 @@ form .personalDetails {
 	padding-bottom: 1em;
 }
 
-form>.personalDetails>header {
+form>.personalDetails>header,
+form .education>header {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
 	justify-content: center;
@@ -56,7 +58,8 @@ form>.personalDetails>header {
 
 
 
-form>.personalDetails button[type="button"] {
+form>.personalDetails button[type="button"],
+form .education button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
 	cursor: var(--btn-cursor);

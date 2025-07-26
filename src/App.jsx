@@ -40,8 +40,20 @@ function App() {
 	//===================================================================
 
 	const [
-		isShown,
-		setIsShown
+		education,
+		setEducation
+	] = useState([{
+		school: "",
+		degree: "",
+		startDate: "",
+		endDate: ""
+	}]);
+
+	//===================================================================
+
+	const [
+		areDetailsShown,
+		setAreDetailsShown
 	] = useState(
 		false
 	);
@@ -49,8 +61,17 @@ function App() {
 	//===================================================================
 
 	const [
-		isSubmitted,
-		setIsSubmitted
+		isEducationShown,
+		setIsEducationShown
+	] = useState(
+		false
+	);
+
+	//===================================================================
+
+	const [
+		isFormSubmitted,
+		setIsFormSubmitted
 	] = useState(
 		false
 	);
@@ -74,14 +95,25 @@ function App() {
 
 	//===================================================================
 
-	function toggleDisplay() {
+	function toggleDetailsSection() {
 
-		setIsShown(
+		setAreDetailsShown(
 			(prev) =>
 				(!prev)
 		);
 
-	} // toggleDisplay()
+	} // toggleDetailsSection()
+
+	//===================================================================
+
+	function toggleEducationSection() {
+
+		setIsEducationShown(
+			(prev) =>
+				(!prev)
+		);
+
+	} // toggleEducationSection()
 
 	//===================================================================
 
@@ -89,7 +121,7 @@ function App() {
 
 		event.preventDefault();
 
-		setIsSubmitted(
+		setIsFormSubmitted(
 			true
 		);
 
@@ -112,7 +144,6 @@ function App() {
 
 	} // submitForm()
 
-
 	//===================================================================
 
 
@@ -121,17 +152,20 @@ function App() {
 		<div className="wrapper">
 			<Sidebar>
 				<Form
-					isShown={isShown}
+					areDetailsShown={areDetailsShown}
+					isEducationShown={isEducationShown}
 					onChange={handleInputChange}
 					onSubmit={submitForm}
-					toggleDisplay={toggleDisplay}
+					toggleDetails={toggleDetailsSection}
+					toggleEducation={toggleEducationSection}
 				/>
 			</Sidebar>
 
-			{(isSubmitted) &&
+			{(isFormSubmitted) &&
 
 				<Resume
 					details={details}
+					education={education}
 				/>
 
 			}

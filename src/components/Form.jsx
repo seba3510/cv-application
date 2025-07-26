@@ -10,11 +10,19 @@ import {
 
 //===================================================================
 
+import {
+	Education
+} from "./Education.jsx";
+
+//===================================================================
+
 function Form({
 	onSubmit,
-	isShown,
+	areDetailsShown,
+	isEducationShown,
 	onChange,
-	toggleDisplay
+	toggleDetails,
+	toggleEducation
 }) {
 
 	//===================================================================
@@ -24,9 +32,15 @@ function Form({
 
 		<form onSubmit={onSubmit}>
 			<PersonalDetails
-				isShown={isShown}
+				isShown={areDetailsShown}
 				onChange={onChange}
-				onClick={toggleDisplay}
+				onClick={toggleDetails}
+			/>
+
+			<Education
+				isShown={isEducationShown}
+				onChange={onChange}
+				onClick={toggleEducation}
 			/>
 
 			<div className="btnsContainer">

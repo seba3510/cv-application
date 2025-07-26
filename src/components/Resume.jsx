@@ -1,5 +1,6 @@
 function Resume({
-	details
+	details,
+	education
 }) {
 
 	return (
@@ -20,6 +21,24 @@ function Resume({
 					</p>
 				</div>
 			</header>
+
+			<section className="education">
+				<h1>
+					{education.school}
+				</h1>
+
+				<p>
+					{education.degree}
+				</p>
+
+				<p>
+					{education.startYear}
+				</p>
+
+				<p>
+					{education.endYear}
+				</p>
+			</section>
 		</main>
 
 	);
