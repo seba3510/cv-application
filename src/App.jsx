@@ -73,35 +73,26 @@ function App() {
 	const [
 		form,
 		setForm
-	] = useState([
+	] = useState(
 		{
-			id: crypto.randomUUID(),
-			labelText: "Full Name",
-			name: "fullName",
-			type: "text",
-			value: ""
-		},
-		{
-			id: crypto.randomUUID(),
-			labelText: "Email",
-			name: "email",
-			type: "email",
-			value: ""
-		},
-		{
-			id: crypto.randomUUID(),
-			labelText: "Phone Number",
-			name: "phoneNumber",
-			type: "tel",
-			value: ""
-		}
-	]);
+			fullName: "",
+			email: "",
+			phoneNumber: "",
+			school: "",
+			major: "",
+			date: "",
+			company: "",
+			position: "",
+			responsibilities: [],
+			startDate: "",
+			endDate: ""
+		});
 
 	//==================================================================
 
 	const [
-		isSectionDisplayed,
-		setIsSectionDisplayed
+		isSectionToggled,
+		setIsSectionToggled
 	] = useState(
 		false
 	);
@@ -120,11 +111,11 @@ function App() {
 	function toggleDisplay() {
 
 		const isShown =
-			isSectionDisplayed;
+			isSectionToggled;
 
 		if (!isShown) {
 
-			setIsSectionDisplayed(
+			setIsSectionToggled(
 				true
 			);
 
@@ -136,7 +127,7 @@ function App() {
 
 		} // if
 
-		setIsSectionDisplayed(
+		setIsSectionToggled(
 			false
 		);
 
@@ -169,18 +160,37 @@ function App() {
 
 	function displayPersonalDetails() {
 
-		return form.map((element) => (
+		return (
 
-			<FormControl
-				key={element.id}
-				type={element.type}
-				id={element.name}
-				name={element.name}
-				labelText={element.labelText}
-				onChange={handleInputChange}
-			/>
+			<Section className={"formControls"}>
+				<FormControl
+					type={"text"}
+					id={"fullName"}
+					name={"fullName"}
+					value={form.fullName}
+					labelText={"Full Name"}
+					onChange={handleInputChange}
+				/>
 
-		)); /// map()
+				<FormControl
+					type={"email"}
+					id={"email"}
+					name={"email"}
+					value={form.email}
+					labelText={"Email"}
+					onChange={handleInputChange}
+				/>
+
+				<FormControl
+					type={"tel"}
+					id={"phoneNumber"}
+					name={"phoneNumber"}
+					value={form.phoneNumber}
+					labelText={"Phone Number"}
+					onChange={handleInputChange}
+				/>
+			</Section>
+		);
 
 	} // displayPersonalDetails()
 
@@ -224,9 +234,6 @@ function App() {
 				true;
 
 			formElem[3].disabled =
-				true;
-
-			formElem[5].disabled =
 				true;
 
 			console.log("Input Values Cleared..");
@@ -274,14 +281,6 @@ function App() {
 
 	//==================================================================
 
-	function clearResume() {
-
-
-
-	} // clearResume()
-
-	//==================================================================
-
 
 	return (
 
@@ -298,16 +297,12 @@ function App() {
 							</Button>
 						</Header>
 
-						{(isSectionDisplayed) &&
+						{(isSectionToggled) &&
 							displayPersonalDetails()
 						}
 					</Section>
 
 					<Container className={"btnsContainer"}>
-
-						<Button type={"button"} onClick={clearResume}>
-							Clear Resume
-						</Button>
 
 						<Button type={"submit"}>
 							Save

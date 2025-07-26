@@ -62,16 +62,23 @@ button[type="submit"] {
 }
 
 main h1:first-child {
-	background-color: rgb(14 55 78);
-	color: white;
 	margin-top: 0;
 	text-align: center;
+	height: 100%;
 }
 
 main header:first-child {
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
-	border: 3px solid red;
+	border: 5px solid green;
+	background-color: rgb(14 55 78);
+	color: white;
+}
+
+main header:first-child>div {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+	justify-content: space-between;
 }
 
 aside .btnsContainer:last-child {
