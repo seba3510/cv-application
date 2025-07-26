@@ -30,8 +30,6 @@ aside {
 }
 
 form {
-	display: inherit;
-	flex-direction: inherit;
 	height: inherit;
 	padding: 1em;
 }
@@ -63,9 +61,17 @@ button[type="submit"] {
 	cursor: var(--btn-cursor);
 }
 
-main>header {
+main h1:first-child {
 	background-color: rgb(14 55 78);
 	color: white;
+	margin-top: 0;
+	text-align: center;
+}
+
+main header:first-child {
+	display: var(--flex-display);
+	flex-direction: var(--flex-column);
+	border: 3px solid red;
 }
 
 aside .btnsContainer:last-child {
@@ -74,6 +80,5 @@ aside .btnsContainer:last-child {
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
-	border: 3px solid red;
 	cursor: var(--btn-cursor);
 }

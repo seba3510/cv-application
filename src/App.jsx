@@ -1,4 +1,4 @@
-import "./styles/App.css";
+import "./styles/style.css";
 
 //================================================================
 
@@ -73,26 +73,35 @@ function App() {
 	const [
 		form,
 		setForm
-	] = useState(
+	] = useState([
 		{
-			fullName: "",
-			email: "",
-			phoneNumber: "",
-			school: "",
-			major: "",
-			date: "",
-			company: "",
-			position: "",
-			responsibilities: [],
-			startDate: "",
-			endDate: ""
-		});
+			id: crypto.randomUUID(),
+			labelText: "Full Name",
+			name: "fullName",
+			type: "text",
+			value: ""
+		},
+		{
+			id: crypto.randomUUID(),
+			labelText: "Email",
+			name: "email",
+			type: "email",
+			value: ""
+		},
+		{
+			id: crypto.randomUUID(),
+			labelText: "Phone Number",
+			name: "phoneNumber",
+			type: "tel",
+			value: ""
+		}
+	]);
 
 	//==================================================================
 
 	const [
-		toggle,
-		setToggle
+		isSectionDisplayed,
+		setIsSectionDisplayed
 	] = useState(
 		false
 	);
@@ -100,8 +109,8 @@ function App() {
 	//==================================================================
 
 	const [
-		showResume,
-		setShowResume
+		isResumeShown,
+		setIsResumeShown
 	] = useState(
 		false
 	);
@@ -111,11 +120,11 @@ function App() {
 	function toggleDisplay() {
 
 		const isShown =
-			toggle;
+			isSectionDisplayed;
 
 		if (!isShown) {
 
-			setToggle(
+			setIsSectionDisplayed(
 				true
 			);
 
@@ -127,7 +136,7 @@ function App() {
 
 		} // if
 
-		setToggle(
+		setIsSectionDisplayed(
 			false
 		);
 
@@ -160,37 +169,18 @@ function App() {
 
 	function displayPersonalDetails() {
 
-		return (
+		return form.map((element) => (
 
-			<Section className={"formControls"}>
-				<FormControl
-					type={"text"}
-					id={"fullName"}
-					name={"fullName"}
-					value={form.fullName}
-					labelText={"Full Name"}
-					onChange={handleInputChange}
-				/>
+			<FormControl
+				key={element.id}
+				type={element.type}
+				id={element.name}
+				name={element.name}
+				labelText={element.labelText}
+				onChange={handleInputChange}
+			/>
 
-				<FormControl
-					type={"email"}
-					id={"email"}
-					name={"email"}
-					value={form.email}
-					labelText={"Email"}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"tel"}
-					id={"phoneNumber"}
-					name={"phoneNumber"}
-					value={form.phoneNumber}
-					labelText={"Phone Number"}
-					onChange={handleInputChange}
-				/>
-			</Section>
-		);
+		)); /// map()
 
 	} // displayPersonalDetails()
 
@@ -221,7 +211,7 @@ function App() {
 			);
 
 
-			setShowResume(
+			setIsResumeShown(
 				true
 			);
 
@@ -236,7 +226,8 @@ function App() {
 			formElem[3].disabled =
 				true;
 
-
+			formElem[5].disabled =
+				true;
 
 			console.log("Input Values Cleared..");
 
@@ -283,6 +274,15 @@ function App() {
 
 	//==================================================================
 
+	function clearResume() {
+
+
+
+	} // clearResume()
+
+	//==================================================================
+
+
 	return (
 
 		<Container className={"wrapper"}>
@@ -298,14 +298,14 @@ function App() {
 							</Button>
 						</Header>
 
-						{(toggle) &&
+						{(isSectionDisplayed) &&
 							displayPersonalDetails()
 						}
 					</Section>
 
 					<Container className={"btnsContainer"}>
 
-						<Button type={"button"}>
+						<Button type={"button"} onClick={clearResume}>
 							Clear Resume
 						</Button>
 
@@ -319,7 +319,7 @@ function App() {
 
 			</Sidebar>
 
-			{(showResume) &&
+			{(isResumeShown) &&
 				displayResume()}
 
 		</Container>
