@@ -1,323 +1,142 @@
 import "./styles/style.css";
 
-//================================================================
+//==============================================================
 
 import {
 	useState
 } from "react";
 
-//================================================================
-
-import {
-	Form
-} from "./components/organisms/Form.jsx";
-
-//================================================================
-
-import {
-	Section
-} from "./components/organisms/Section.jsx";
-
-//================================================================
-
-import {
-	Button
-} from "./components/atoms/Button.jsx";
-
-//==============================================================
-
-import {
-	Header
-} from "./components/atoms/Header.jsx";
-
 //==============================================================
 
 import {
 	Sidebar
-} from "./components/organisms/Sidebar.jsx";
+} from "./components/Sidebar.jsx";
 
 //==============================================================
 
 import {
-	FormControl
-} from "./components/organisms/FormControl.jsx";
-
-//==============================================================
-
-import {
-	Container
-} from "./components/molecules/Container.jsx";
+	Form
+} from "./components/Form.jsx";
 
 //==============================================================
 
 import {
 	Resume
-} from "./components/organisms/Resume.jsx";
-
-//==============================================================
-
-import {
-	HeadingOne
-} from "./components/atoms/HeadingOne.jsx";
-
-//==============================================================
-
-import {
-	Paragraph
-} from "./components/atoms/Paragraph.jsx";
+} from "./components/Resume.jsx";
 
 //==============================================================
 
 function App() {
 
 	const [
-		form,
-		setForm
-	] = useState(
-		{
-			fullName: "",
-			email: "",
-			phoneNumber: "",
-			school: "",
-			major: "",
-			date: "",
-			company: "",
-			position: "",
-			responsibilities: [],
-			startDate: "",
-			endDate: ""
-		});
+		details,
+		setDetails
+	] = useState({
+		fullName: "",
+		email: "",
+		phone: ""
+	});
 
-	//==================================================================
+	//===================================================================
 
 	const [
-		isSectionToggled,
-		setIsSectionToggled
+		isShown,
+		setIsShown
 	] = useState(
 		false
 	);
 
-	//==================================================================
+	//===================================================================
 
 	const [
-		isResumeShown,
-		setIsResumeShown
+		isSubmitted,
+		setIsSubmitted
 	] = useState(
 		false
 	);
 
-	//==================================================================
-
-	function toggleDisplay() {
-
-		const isShown =
-			isSectionToggled;
-
-		if (!isShown) {
-
-			setIsSectionToggled(
-				true
-			);
-
-			console.log(
-				"Section displayed."
-			);
-
-			return;
-
-		} // if
-
-		setIsSectionToggled(
-			false
-		);
-
-		console.log(
-			"The section was hidden."
-		);
-
-		return;
-
-	} // toggleDisplay()
-
-	//==================================================================
+	//===================================================================
 
 	function handleInputChange(event) {
 
-		const inputField =
+		const input =
 			event.target.name;
 
 		const inputValue =
 			event.target.value;
 
-		setForm({
-			...form,
-			[inputField]: inputValue
+		setDetails({
+			...details,
+			[input]: inputValue
 		});
 
 	} // handleInputChange()
 
-	//==================================================================
+	//===================================================================
 
-	function displayPersonalDetails() {
+	function toggleDisplay() {
 
-		return (
-
-			<Section className={"formControls"}>
-				<FormControl
-					type={"text"}
-					id={"fullName"}
-					name={"fullName"}
-					value={form.fullName}
-					labelText={"Full Name"}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"email"}
-					id={"email"}
-					name={"email"}
-					value={form.email}
-					labelText={"Email"}
-					onChange={handleInputChange}
-				/>
-
-				<FormControl
-					type={"tel"}
-					id={"phoneNumber"}
-					name={"phoneNumber"}
-					value={form.phoneNumber}
-					labelText={"Phone Number"}
-					onChange={handleInputChange}
-				/>
-			</Section>
+		setIsShown(
+			(prev) =>
+				(!prev)
 		);
 
-	} // displayPersonalDetails()
+	} // toggleDisplay()
 
-	//==================================================================
+	//===================================================================
 
 	function submitForm(event) {
 
-		try {
+		event.preventDefault();
 
-			event.preventDefault();
+		setIsSubmitted(
+			true
+		);
 
-			const inputField =
-				event.target.name;
+		const form =
+			event.target;
 
-			const inputValue =
-				event.target.value
+		form.reset();
 
-			setForm({
-				...form,
-				[inputField]: inputValue
-			});
+		form[1].disabled =
+			true;
 
-			const formElem =
-				event.target;
+		form[2].disabled =
+			true;
 
-			console.log(
-				formElem
-			);
+		form[3].disabled =
+			true;
 
-
-			setIsResumeShown(
-				true
-			);
-
-			formElem.reset();
-
-			formElem[1].disabled =
-				true;
-
-			formElem[2].disabled =
-				true;
-
-			formElem[3].disabled =
-				true;
-
-			console.log("Input Values Cleared..");
-
-			console.log(form);
-
-			console.log(formElem)
-
-
-		} // try
-
-		catch (error) {
-
-			alert(error);
-
-		} // catch
+		form[5].disabled =
+			true;
 
 	} // submitForm()
 
-	//==================================================================
 
-	function displayResume() {
-
-		return (
-			<Resume>
-				<Header>
-					<HeadingOne>
-						{form.fullName}
-					</HeadingOne>
-
-					<Container>
-						<Paragraph>
-							{form.email}
-						</Paragraph>
-
-						<Paragraph>
-							{form.phoneNumber}
-						</Paragraph>
-					</Container>
-				</Header>
-			</Resume>
-		);
-
-	} // displayResume()
-
-	//==================================================================
+	//===================================================================
 
 
 	return (
 
-		<Container className={"wrapper"}>
-
+		<div className="wrapper">
 			<Sidebar>
-				<Form onSubmit={submitForm}>
-
-					<Section className="personalDetails">
-						<Header>
-							<HeadingOne>Personal Details</HeadingOne>
-							<Button type="button" onClick={toggleDisplay}>
-								^
-							</Button>
-						</Header>
-
-						{(isSectionToggled) &&
-							displayPersonalDetails()
-						}
-					</Section>
-
-					<Container className={"btnsContainer"}>
-
-						<Button type={"submit"}>
-							Save
-						</Button>
-
-					</Container>
-
-				</Form>
-
+				<Form
+					isShown={isShown}
+					onChange={handleInputChange}
+					onSubmit={submitForm}
+					toggleDisplay={toggleDisplay}
+				/>
 			</Sidebar>
 
-			{(isResumeShown) &&
-				displayResume()}
+			{(isSubmitted) &&
 
-		</Container>
+				<Resume
+					details={details}
+				/>
+
+			}
+		</div>
+
 	);
 
 } // App()
