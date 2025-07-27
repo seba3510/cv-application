@@ -31,11 +31,12 @@ function App() {
 	const [
 		details,
 		setDetails
-	] = useState({
+	] = useState([{
+		id: crypto.randomUUID(),
 		fullName: "",
 		email: "",
 		phone: ""
-	});
+	}]);
 
 	//===================================================================
 
@@ -43,6 +44,7 @@ function App() {
 		education,
 		setEducation
 	] = useState([{
+		id: crypto.randomUUID(),
 		school: "",
 		degree: "",
 		startDate: "",
@@ -78,7 +80,7 @@ function App() {
 
 	//===================================================================
 
-	function handleInputChange(event) {
+	function handleDetailsChange(event) {
 
 		const input =
 			event.target.name;
@@ -90,8 +92,7 @@ function App() {
 			...details,
 			[input]: inputValue
 		});
-
-	} // handleInputChange()
+	} // handleDetailsChange()
 
 	//===================================================================
 
@@ -117,6 +118,27 @@ function App() {
 
 	//===================================================================
 
+	function handleEducationChange(event) {
+
+		const form =
+			event.target;
+
+
+		setEducation(
+			[
+				{
+					[form[5]]: form[5].value,
+					[form[6]]: form[6].value,
+					[form[7]]: form[7].value,
+					[form[8]]: form[8].value
+				}
+			]);
+
+	} // handleEducationChange()
+
+	//===================================================================
+
+
 	function submitForm(event) {
 
 		event.preventDefault();
@@ -125,8 +147,13 @@ function App() {
 			true
 		);
 
+
 		const form =
 			event.target;
+
+		console.log(
+			form
+		);
 
 		form.reset();
 
@@ -146,7 +173,6 @@ function App() {
 
 	//===================================================================
 
-
 	return (
 
 		<div className="wrapper">
@@ -154,10 +180,12 @@ function App() {
 				<Form
 					areDetailsShown={areDetailsShown}
 					isEducationShown={isEducationShown}
-					onChange={handleInputChange}
+					handleDetailsChange={handleDetailsChange}
 					onSubmit={submitForm}
 					toggleDetails={toggleDetailsSection}
 					toggleEducation={toggleEducationSection}
+					handleEducationChange={handleEducationChange}
+					education={education}
 				/>
 			</Sidebar>
 

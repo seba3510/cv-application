@@ -56,8 +56,6 @@ form .education>header {
 	flex-direction: var(--flex-column);
 }
 
-
-
 form>.personalDetails button[type="button"],
 form .education button[type="button"] {
 	margin-left: 1em;
@@ -71,6 +69,19 @@ button[type="submit"] {
 	cursor: var(--btn-cursor);
 }
 
+main {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 200px 1fr;
+	grid-template-areas:
+		"personalDetails"
+		"education"
+}
+
+main .education {
+	grid-area: education;
+}
+
 main h1:first-child {
 	margin-top: 0;
 	text-align: center;
@@ -78,6 +89,7 @@ main h1:first-child {
 }
 
 main header:first-child {
+	grid-area: personalDetails;
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
 	border: 5px solid green;
@@ -98,4 +110,20 @@ aside .btnsContainer:last-child {
 	align-items: center;
 	gap: 20px;
 	cursor: var(--btn-cursor);
+}
+
+main .education {
+	display: grid;
+	grid-template-columns: repeat(auto-filo, 500px);
+	grid-template-areas: "date school";
+}
+
+main .education .date {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+}
+
+main .education .school {
+	display: var(--flex-display);
+	flex-direction: var(--flex-column);
 }

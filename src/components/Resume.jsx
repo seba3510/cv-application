@@ -3,10 +3,46 @@ function Resume({
 	education
 }) {
 
+
+
+	function displayEducation() {
+
+		return education.map((element) => (
+
+			<>
+
+
+				<section className="date">
+					<p>
+						{
+							`${element.startDate} - ` +
+							`${element.endDate}`
+						}
+					</p>
+				</section>
+
+				<section className="school">
+					<h3>
+						{element.school}
+					</h3>
+					<p>
+						{element.degree}
+					</p>
+				</section>
+			</>
+
+
+		)); // map()
+
+	} // displayEducation()
+
+
+	//====================================================
+
 	return (
 
 		<main>
-			<header>
+			<header className="personalDetails">
 				<h1>
 					{details.fullName}
 				</h1>
@@ -23,21 +59,7 @@ function Resume({
 			</header>
 
 			<section className="education">
-				<h1>
-					{education.school}
-				</h1>
-
-				<p>
-					{education.degree}
-				</p>
-
-				<p>
-					{education.startYear}
-				</p>
-
-				<p>
-					{education.endYear}
-				</p>
+				{displayEducation()}
 			</section>
 		</main>
 

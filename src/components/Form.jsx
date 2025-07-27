@@ -1,10 +1,4 @@
 import {
-	useState
-} from "react";
-
-//===================================================================
-
-import {
 	PersonalDetails
 } from "./PersonalDetails.jsx";
 
@@ -20,9 +14,11 @@ function Form({
 	onSubmit,
 	areDetailsShown,
 	isEducationShown,
-	onChange,
+	handleDetailsChange,
 	toggleDetails,
-	toggleEducation
+	toggleEducation,
+	handleEducationChange,
+	education
 }) {
 
 	//===================================================================
@@ -33,13 +29,14 @@ function Form({
 		<form onSubmit={onSubmit}>
 			<PersonalDetails
 				isShown={areDetailsShown}
-				onChange={onChange}
+				onChange={handleDetailsChange}
 				onClick={toggleDetails}
 			/>
 
 			<Education
+				education={education}
 				isShown={isEducationShown}
-				onChange={onChange}
+				onChange={handleEducationChange}
 				onClick={toggleEducation}
 			/>
 
