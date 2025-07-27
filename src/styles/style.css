@@ -7,8 +7,8 @@
 
 .wrapper {
 	display: grid;
-	/* grid-template-columns: minmax(100px, 300px) 1fr; */
-	grid-template-columns: minmax(100px, 500px) 1fr;
+	grid-template-columns: minmax(350px, 400px) 1fr;
+	/* grid-template-columns: minmax(100px, 400px) 1fr; */
 	grid-template-areas: "aside main";
 }
 
@@ -26,7 +26,6 @@ aside {
 	grid-area: aside;
 	height: 100vh;
 	background-color: rgba(67, 53, 175, 0.627);
-	border: 10px solid orange;
 }
 
 form {
@@ -75,10 +74,16 @@ main {
 	grid-template-rows: 200px 1fr;
 	grid-template-areas:
 		"personalDetails"
-		"education"
+		"education";
+	padding: 2em;
+	border: 2px solid black;
 }
 
 main .education {
+	display: var(--flex-display);
+	flex-direction: var(--flex-column);
+	justify-content: flex-start;
+	align-items: center;
 	grid-area: education;
 }
 
@@ -92,15 +97,16 @@ main header:first-child {
 	grid-area: personalDetails;
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
-	border: 5px solid green;
+	justify-content: center;
 	background-color: rgb(14 55 78);
 	color: white;
+	padding: 2em 0 2em 0;
 }
 
 main header:first-child>div {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
-	justify-content: space-between;
+	justify-content: space-evenly;
 }
 
 aside .btnsContainer:last-child {
@@ -114,16 +120,32 @@ aside .btnsContainer:last-child {
 
 main .education {
 	display: grid;
-	grid-template-columns: repeat(auto-filo, 500px);
-	grid-template-areas: "date school";
+	grid-template-columns: repeat(2, 500px);
+	grid-template-rows: 100px 200px;
+	grid-template-areas:
+		"header header"
+		"date school";
+	padding: 2em;
 }
 
 main .education .date {
+	grid-area: date;
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
 }
 
 main .education .school {
+	grid-area: school;
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
+}
+
+main .education header {
+	background-color: transparent;
+	grid-area: header;
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+	justify-content: center;
+	align-items: center;
+	color: black;
 }

@@ -16,7 +16,7 @@ function PersonalDetails({
 				</h1>
 
 				<button type="button" onClick={onClick}>
-					^
+					{(isShown) ? "v" : "^"}
 				</button>
 			</header>
 

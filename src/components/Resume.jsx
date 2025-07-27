@@ -3,8 +3,6 @@ function Resume({
 	education
 }) {
 
-
-
 	function displayEducation() {
 
 		return (
@@ -56,6 +54,11 @@ function Resume({
 			</header>
 
 			<section className="education">
+				<header>
+					<h2>
+						Education
+					</h2>
+				</header>
 				{displayEducation()}
 			</section>
 		</main>

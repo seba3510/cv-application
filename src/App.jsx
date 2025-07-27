@@ -102,7 +102,7 @@ function App() {
 
 	//===================================================================
 
-	function toggleDetailsSection() {
+	function toggleDetailsSection(event) {
 
 		setAreDetailsShown(
 			(prev) =>
