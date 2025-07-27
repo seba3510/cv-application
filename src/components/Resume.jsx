@@ -7,32 +7,29 @@ function Resume({
 
 	function displayEducation() {
 
-		return education.map((element) => (
+		return (
 
 			<>
-
-
 				<section className="date">
 					<p>
 						{
-							`${element.startDate} - ` +
-							`${element.endDate}`
+							`${education.startDate} - ` +
+							`${education.endDate}`
 						}
 					</p>
 				</section>
 
 				<section className="school">
 					<h3>
-						{element.school}
+						{education.school}
 					</h3>
+
 					<p>
-						{element.degree}
+						{education.degree}
 					</p>
 				</section>
 			</>
-
-
-		)); // map()
+		);
 
 	} // displayEducation()
 

@@ -31,25 +31,27 @@ function App() {
 	const [
 		details,
 		setDetails
-	] = useState([{
+	] = useState({
 		id: crypto.randomUUID(),
 		fullName: "",
 		email: "",
 		phone: ""
-	}]);
+	});
 
 	//===================================================================
 
 	const [
 		education,
 		setEducation
-	] = useState([{
-		id: crypto.randomUUID(),
-		school: "",
-		degree: "",
-		startDate: "",
-		endDate: ""
-	}]);
+	] = useState([
+		{
+			id: crypto.randomUUID(),
+			school: "",
+			degree: "",
+			startDate: "",
+			endDate: ""
+		}
+	]);
 
 	//===================================================================
 
@@ -82,16 +84,20 @@ function App() {
 
 	function handleDetailsChange(event) {
 
-		const input =
-			event.target.name;
+		const {
+			name,
+			value
+		} = event.target;
 
-		const inputValue =
-			event.target.value;
+		setDetails(
+			(prev) => {
+				return {
+					...prev,
+					[name]: value
+				};
+			}
+		);
 
-		setDetails({
-			...details,
-			[input]: inputValue
-		});
 	} // handleDetailsChange()
 
 	//===================================================================
@@ -120,19 +126,19 @@ function App() {
 
 	function handleEducationChange(event) {
 
-		const form =
-			event.target;
-
+		const {
+			name,
+			value
+		} = event.target;
 
 		setEducation(
-			[
-				{
-					[form[5]]: form[5].value,
-					[form[6]]: form[6].value,
-					[form[7]]: form[7].value,
-					[form[8]]: form[8].value
+			(prev) => {
+				return {
+					...prev,
+					[name]: value
 				}
-			]);
+
+			});
 
 	} // handleEducationChange()
 
@@ -146,7 +152,6 @@ function App() {
 		setIsFormSubmitted(
 			true
 		);
-
 
 		const form =
 			event.target;

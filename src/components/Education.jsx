@@ -69,8 +69,6 @@ function Education({
 							onChange={onChange}
 						/>
 					</div>
-
-
 				</>
 
 			}
