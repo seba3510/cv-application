@@ -235,6 +235,7 @@ function App() {
 				<Resume
 					details={details}
 					education={education}
+					work={work}
 				/>
 
 			}

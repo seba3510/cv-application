@@ -44,7 +44,7 @@ form .education {
 
 form>.personalDetails>header,
 form .education>header,
-form .professionalExperience>header {
+form .work>header {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
 	justify-content: center;
@@ -58,7 +58,7 @@ form .professionalExperience>header {
 
 form>.personalDetails button[type="button"],
 form .education button[type="button"],
-form .professionalExperience button[type="button"] {
+form .work button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
 	cursor: var(--btn-cursor);
@@ -76,7 +76,8 @@ main {
 	grid-template-rows: 200px 1fr;
 	grid-template-areas:
 		"personalDetails"
-		"education";
+		"education"
+		"work";
 	padding: 2em;
 	border: 2px solid black;
 }
@@ -142,7 +143,8 @@ main .education .school {
 	flex-direction: var(--flex-column);
 }
 
-main .education header {
+main .education header,
+main .work header {
 	background-color: transparent;
 	grid-area: header;
 	display: var(--flex-display);

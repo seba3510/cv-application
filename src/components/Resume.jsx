@@ -1,6 +1,7 @@
 function Resume({
 	details,
-	education
+	education,
+	work
 }) {
 
 	function displayEducation() {
@@ -34,6 +35,38 @@ function Resume({
 
 	//====================================================
 
+	function displayWork() {
+
+		return (
+
+			<>
+				<section className="date">
+					<p>
+						{
+							`${work.startDate} - ` +
+							`${work.endDate}`
+						}
+					</p>
+				</section>
+
+				<section className="company">
+					<h3>
+						{work.company}
+					</h3>
+
+					<p>
+						{work.responsibilities}
+					</p>
+				</section>
+			</>
+		);
+
+
+	} // displayWork()
+
+	//====================================================
+
+
 	return (
 
 		<main>
@@ -60,6 +93,14 @@ function Resume({
 					</h2>
 				</header>
 				{displayEducation()}
+			</section>
+
+			<section className="work">
+				<header>
+					<h1>Work</h1>
+				</header>
+
+				{displayWork()}
 			</section>
 		</main>
 

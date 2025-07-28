@@ -1,5 +1,4 @@
 function ProfessionalExperience({
-	array,
 	isShown,
 	onChange,
 	onClick
@@ -8,7 +7,7 @@ function ProfessionalExperience({
 	//================================================================
 
 	return (
-		<section className="professionalExperience">
+		<section className="work">
 
 			<header>
 				<h1>
