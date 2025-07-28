@@ -43,7 +43,7 @@ function App() {
 	const [
 		education,
 		setEducation
-	] = useState([
+	] = useState(
 		{
 			id: crypto.randomUUID(),
 			school: "",
@@ -51,9 +51,22 @@ function App() {
 			startDate: "",
 			endDate: ""
 		}
-	]);
+	);
 
 	//===================================================================
+
+	const [
+		work,
+		setWork
+	] = useState({
+		id: crypto.randomUUID(),
+		company: "",
+		title: "",
+		responsibilities: ""
+	});
+
+	//===================================================================
+
 
 	const [
 		areDetailsShown,
@@ -67,6 +80,15 @@ function App() {
 	const [
 		isEducationShown,
 		setIsEducationShown
+	] = useState(
+		false
+	);
+
+	//===================================================================
+
+	const [
+		isWorkShown,
+		setIsWorkShown
 	] = useState(
 		false
 	);
@@ -102,7 +124,7 @@ function App() {
 
 	//===================================================================
 
-	function toggleDetailsSection(event) {
+	function toggleDetailsSection() {
 
 		setAreDetailsShown(
 			(prev) =>
@@ -121,6 +143,17 @@ function App() {
 		);
 
 	} // toggleEducationSection()
+
+	//===================================================================
+
+	function toggleWorkSection() {
+
+		setIsWorkShown(
+			(prev) =>
+				(!prev)
+		);
+
+	} // toggleWorkSection()
 
 	//===================================================================
 
@@ -144,6 +177,25 @@ function App() {
 
 	//===================================================================
 
+	function handleWorkChange(event) {
+
+		const {
+			name,
+			value
+		} = event.target;
+
+		setWork(
+			(prev) => {
+				return {
+					...prev,
+					[name]: value
+				}
+
+			});
+
+	} // handleWorkChange()
+
+	//===================================================================
 
 	function submitForm(event) {
 
@@ -153,26 +205,6 @@ function App() {
 			true
 		);
 
-		const form =
-			event.target;
-
-		console.log(
-			form
-		);
-
-		form.reset();
-
-		form[1].disabled =
-			true;
-
-		form[2].disabled =
-			true;
-
-		form[3].disabled =
-			true;
-
-		form[5].disabled =
-			true;
 
 	} // submitForm()
 
@@ -191,6 +223,10 @@ function App() {
 					toggleEducation={toggleEducationSection}
 					handleEducationChange={handleEducationChange}
 					education={education}
+					work={work}
+					isWorkShown={isWorkShown}
+					toggleWorkSection={toggleWorkSection}
+					handleWorkChange={handleWorkChange}
 				/>
 			</Sidebar>
 

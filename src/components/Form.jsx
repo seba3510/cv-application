@@ -10,6 +10,12 @@ import {
 
 //===================================================================
 
+import {
+	ProfessionalExperience
+} from "./ProfessionalExperience.jsx";
+
+//===================================================================
+
 function Form({
 	onSubmit,
 	areDetailsShown,
@@ -18,7 +24,11 @@ function Form({
 	toggleDetails,
 	toggleEducation,
 	handleEducationChange,
-	education
+	education,
+	work,
+	isWorkShown,
+	toggleWorkSection,
+	handleWorkChange
 }) {
 
 	//===================================================================
@@ -38,6 +48,14 @@ function Form({
 				isShown={isEducationShown}
 				onChange={handleEducationChange}
 				onClick={toggleEducation}
+			/>
+
+
+			<ProfessionalExperience
+				array={work}
+				isShown={isWorkShown}
+				onChange={handleWorkChange}
+				onClick={toggleWorkSection}
 			/>
 
 			<div className="btnsContainer">

@@ -43,7 +43,8 @@ form .education {
 }
 
 form>.personalDetails>header,
-form .education>header {
+form .education>header,
+form .professionalExperience>header {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
 	justify-content: center;
@@ -56,7 +57,8 @@ form .education>header {
 }
 
 form>.personalDetails button[type="button"],
-form .education button[type="button"] {
+form .education button[type="button"],
+form .professionalExperience button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
 	cursor: var(--btn-cursor);
