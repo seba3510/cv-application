@@ -1,12 +1,18 @@
-# React + Vite
+# Resume Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small application where users can input their information and generate a CV/résumé.
 
-Currently, two official plugins are available:
+## Challenges Encountered
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Showing and hiding each section of the sidebar**: At first, I tried to use the "select"element to display the form controls of each section similar to a dropdown menu. After trying, i realized that a simple button sufficed.
 
-## Expanding the ESLint configuration
+**Adding more content to the "Experience" and "Education" section**: The instructions of the project don't specify that for these sections, the user must can add as many items as possible. But because my goal was to finish this project by the end of the summer, I realized that I won't be able to, because it was taking me too much time. So, what I ended up doing was follow the project's instructions.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+HTML, CSS, React
+
+## Acknowledgements
+
+- [The Odin Project's React Course](https://www.theodinproject.com/paths/full-stack-javascript/courses/react)
+- [Project Instructions](https://www.theodinproject.com/lessons/node-path-react-new-cv-application)
