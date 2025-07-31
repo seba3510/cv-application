@@ -15,14 +15,20 @@ import {
 //==============================================================
 
 import {
-	Form
-} from "./components/Form.jsx";
+	PersonalDetailsForm
+} from "./components/forms/PersonalDetailsForm.jsx";
 
 //==============================================================
 
 import {
 	Resume
 } from "./components/Resume.jsx";
+
+//==============================================================
+
+import {
+	EducationForm
+} from "./components/forms/EducationForm.jsx";
 
 //==============================================================
 
@@ -43,14 +49,31 @@ function App() {
 	const [
 		education,
 		setEducation
+	] = useState([]);
+
+	//===================================================================
+
+	const [
+		currentEducationID,
+		setCurrentEducationID
+	] = useState(null);
+
+	//===================================================================
+
+	const [
+		isAddEducationBtnClicked,
+		setIsAddEducationBtnClicked
 	] = useState(
-		{
-			id: crypto.randomUUID(),
-			school: "",
-			degree: "",
-			startDate: "",
-			endDate: ""
-		}
+		false
+	);
+
+	//===================================================================
+
+	const [
+		isEducationFormSubmitted,
+		setIsEducationFormSubmitted
+	] = useState(
+		false
 	);
 
 	//===================================================================
@@ -67,7 +90,6 @@ function App() {
 
 	//===================================================================
 
-
 	const [
 		areDetailsShown,
 		setAreDetailsShown
@@ -78,8 +100,8 @@ function App() {
 	//===================================================================
 
 	const [
-		isEducationShown,
-		setIsEducationShown
+		isEducationSectionShown,
+		setIsEducationSectionShown
 	] = useState(
 		false
 	);
@@ -89,15 +111,6 @@ function App() {
 	const [
 		isWorkShown,
 		setIsWorkShown
-	] = useState(
-		false
-	);
-
-	//===================================================================
-
-	const [
-		isFormSubmitted,
-		setIsFormSubmitted
 	] = useState(
 		false
 	);
@@ -137,7 +150,7 @@ function App() {
 
 	function toggleEducationSection() {
 
-		setIsEducationShown(
+		setIsEducationSectionShown(
 			(prev) =>
 				(!prev)
 		);
@@ -146,14 +159,13 @@ function App() {
 
 	//===================================================================
 
-	function toggleWorkSection() {
+	function displayEducationForm() {
 
-		setIsWorkShown(
-			(prev) =>
-				(!prev)
+		setIsAddEducationBtnClicked(
+			true
 		);
 
-	} // toggleWorkSection()
+	} // displayEducationForm()
 
 	//===================================================================
 
@@ -164,14 +176,46 @@ function App() {
 			value
 		} = event.target;
 
-		setEducation(
-			(prev) => {
-				return {
-					...prev,
-					[name]: value
-				}
+		setEducation((prev) => {
 
-			});
+			if (currentEducationID) {
+
+				return prev.map((element) => {
+
+					const areIDsEqual =
+						element.id ===
+						currentEducationID;
+
+					if (areIDsEqual) {
+
+						return {
+							...element,
+							[name]: value,
+						};
+
+					} // if
+
+					return element;
+
+				}); // map()
+
+			} // if
+
+
+			const newEntry = {
+				id: crypto.randomUUID(),
+				[name]: value,
+			};
+
+			setCurrentEducationID(
+				newEntry.id
+			);
+
+			return [
+				...prev,
+				newEntry
+			];
+		});
 
 	} // handleEducationChange()
 
@@ -197,13 +241,36 @@ function App() {
 
 	//===================================================================
 
-	function submitForm(event) {
+	function submitEducationForm(event) {
 
-		event.preventDefault();
+		try {
 
-		setIsFormSubmitted(
-			true
-		);
+			event.preventDefault();
+
+			setIsEducationFormSubmitted(
+				true
+			);
+
+			setIsEducationSectionShown(
+				false
+			);
+
+			setIsAddEducationBtnClicked(
+				false
+			);
+
+			setCurrentEducationID(
+				null
+			);
+
+
+		} // try
+
+		catch (error) {
+
+			alert(error);
+
+		} // catch
 
 
 	} // submitForm()
@@ -214,31 +281,31 @@ function App() {
 
 		<div className="wrapper">
 			<Sidebar>
-				<Form
-					areDetailsShown={areDetailsShown}
-					isEducationShown={isEducationShown}
-					handleDetailsChange={handleDetailsChange}
-					onSubmit={submitForm}
-					toggleDetails={toggleDetailsSection}
-					toggleEducation={toggleEducationSection}
-					handleEducationChange={handleEducationChange}
-					education={education}
-					work={work}
-					isWorkShown={isWorkShown}
-					toggleWorkSection={toggleWorkSection}
-					handleWorkChange={handleWorkChange}
+
+				<PersonalDetailsForm
+					details={details}
+					onChange={handleDetailsChange}
 				/>
+
+				<EducationForm
+					toggleSection={toggleEducationSection}
+					education={education}
+					isButtonClicked={isAddEducationBtnClicked}
+					isShown={isEducationSectionShown}
+					displayForm={displayEducationForm}
+					onChange={handleEducationChange}
+					onSubmit={submitEducationForm}
+					isSubmitted={isEducationFormSubmitted}
+				/>
+
 			</Sidebar>
 
-			{(isFormSubmitted) &&
+			<Resume
+				details={details}
+				education={education}
+			/>
 
-				<Resume
-					details={details}
-					education={education}
-					work={work}
-				/>
 
-			}
 		</div>
 
 	);

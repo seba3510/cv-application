@@ -8,8 +8,7 @@
 .wrapper {
 	display: grid;
 	grid-template-columns: minmax(350px, 400px) 1fr;
-	/* grid-template-columns: minmax(100px, 400px) 1fr; */
-	grid-template-areas: "aside main";
+	grid-template-areas: "aside resume";
 }
 
 body {
@@ -28,13 +27,17 @@ aside {
 	background-color: rgba(67, 53, 175, 0.627);
 }
 
+aside header:first-child {
+	text-align: center;
+}
+
 form {
 	height: inherit;
 	padding: 1em;
 }
 
-form .personalDetails,
-form .education {
+aside .personalDetails,
+aside .education {
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
 	justify-content: center;
@@ -42,8 +45,12 @@ form .education {
 	padding-bottom: 1em;
 }
 
+aside .personalDetails {
+	border: 3px solid red;
+}
+
 form>.personalDetails>header,
-form .education>header,
+section.education>header,
 form .work>header {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
@@ -56,9 +63,8 @@ form .work>header {
 	flex-direction: var(--flex-column);
 }
 
-form>.personalDetails button[type="button"],
-form .education button[type="button"],
-form .work button[type="button"] {
+form.education button[type="button"],
+form.work button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
 	cursor: var(--btn-cursor);
@@ -67,10 +73,20 @@ form .work button[type="button"] {
 button[type="submit"] {
 	align-self: center;
 	padding: 0.3em;
+	margin-top: 20px;
 	cursor: var(--btn-cursor);
 }
 
-main {
+form.education .btnsContainer {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+	justify-content: center;
+	align-items: center;
+	padding: 0.5em;
+}
+
+.resume {
+	grid-area: resume;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 200px 1fr;
@@ -82,21 +98,13 @@ main {
 	border: 2px solid black;
 }
 
-main .education {
-	display: var(--flex-display);
-	flex-direction: var(--flex-column);
-	justify-content: flex-start;
-	align-items: center;
-	grid-area: education;
-}
-
-main h1:first-child {
+.resume h1:first-child {
 	margin-top: 0;
 	text-align: center;
-	height: 100%;
+	/* height: 100%; */
 }
 
-main header:first-child {
+.resume .personalDetails {
 	grid-area: personalDetails;
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
@@ -106,7 +114,12 @@ main header:first-child {
 	padding: 2em 0 2em 0;
 }
 
-main header:first-child>div {
+.resume .personalDetails div {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+}
+
+.resume header:first-child>div {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
 	justify-content: space-evenly;
@@ -121,35 +134,38 @@ aside .btnsContainer:last-child {
 	cursor: var(--btn-cursor);
 }
 
-main .education {
-	display: grid;
-	grid-template-columns: repeat(2, 500px);
-	grid-template-rows: 100px 200px;
-	grid-template-areas:
-		"header header"
-		"date school";
-	padding: 2em;
-}
-
-main .education .date {
-	grid-area: date;
-	display: var(--flex-display);
-	flex-direction: var(--flex-row);
-}
-
-main .education .school {
-	grid-area: school;
+.resume .education {
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
+	justify-content: flex-start;
+	align-items: center;
+	border: 5px solid red;
 }
 
-main .education header,
-main .work header {
-	background-color: transparent;
-	grid-area: header;
-	display: var(--flex-display);
-	flex-direction: var(--flex-row);
+.resume .education .container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	justify-content: center;
 	align-items: center;
-	color: black;
+	border: 3px solid blue;
+}
+
+.resume .education .school {
+	display: var(--flex-display);
+	flex-direction: var(--flex-column);
+	border: 3px solid red;
+	align-items: center;
+}
+
+.educationItem {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+	justify-content: space-evenly;
+	align-items: center;
+	border: 4px solid blue;
+}
+
+.educationItem img {
+	width: 10%;
+	margin-top: 15px;
 }

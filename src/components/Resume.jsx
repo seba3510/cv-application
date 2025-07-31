@@ -1,75 +1,16 @@
+import {
+	Fragment
+} from "react";
+
 function Resume({
 	details,
-	education,
-	work
+	education
 }) {
-
-	function displayEducation() {
-
-		return (
-
-			<>
-				<section className="date">
-					<p>
-						{
-							`${education.startDate} - ` +
-							`${education.endDate}`
-						}
-					</p>
-				</section>
-
-				<section className="school">
-					<h3>
-						{education.school}
-					</h3>
-
-					<p>
-						{education.degree}
-					</p>
-				</section>
-			</>
-		);
-
-	} // displayEducation()
-
-
-	//====================================================
-
-	function displayWork() {
-
-		return (
-
-			<>
-				<section className="date">
-					<p>
-						{
-							`${work.startDate} - ` +
-							`${work.endDate}`
-						}
-					</p>
-				</section>
-
-				<section className="company">
-					<h3>
-						{work.company}
-					</h3>
-
-					<p>
-						{work.responsibilities}
-					</p>
-				</section>
-			</>
-		);
-
-
-	} // displayWork()
-
-	//====================================================
 
 
 	return (
 
-		<main>
+		<main className="resume">
 			<header className="personalDetails">
 				<h1>
 					{details.fullName}
@@ -87,21 +28,37 @@ function Resume({
 			</header>
 
 			<section className="education">
-				<header>
-					<h2>
-						Education
-					</h2>
-				</header>
-				{displayEducation()}
+				<h3>Education</h3>
+				{
+					education.map((element) => (
+
+						<div key={element.id} className="container">
+							<section className="date">
+								<p>
+									{
+										`  ${element.startDate} - ` +
+										`${element.endDate}`
+									}
+								</p>
+							</section>
+
+							<section className="school">
+								<h1>
+									{element.school}
+								</h1>
+
+								<p>
+									{element.degree}
+								</p>
+							</section>
+
+						</div>
+
+					))
+
+				}
 			</section>
 
-			<section className="work">
-				<header>
-					<h1>Work</h1>
-				</header>
-
-				{displayWork()}
-			</section>
 		</main>
 
 	);
