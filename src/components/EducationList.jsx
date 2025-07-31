@@ -1,8 +1,6 @@
-import icon from "../assets/icons/view.png";
-
-//===========================================================
-
-function EducationList({ list }) {
+function EducationList({
+	list
+}) {
 
 
 	return (
@@ -10,15 +8,10 @@ function EducationList({ list }) {
 		<>
 			{
 				list.map((element) => (
-					<div className="educationItem">
-						<p>
+					<div className="educationItem" key={element.id}>
+						<h3>
 							{element.school}
-						</p>
-
-						<img
-							src={icon}
-							alt="Show item"
-						/>
+						</h3>
 					</div>
 				))
 			}

@@ -1,15 +1,25 @@
 import {
 	EducationList
-} from "../EducationList.jsx"
+} from "../EducationList.jsx";
+
+//===================================================================
+
+import icon
+	from "../../assets/icons/education.png";
+
+//===================================================================
 
 function EducationForm({
 	education,
 	isShown,
 	isButtonClicked,
+	isItemClicked,
 	isSubmitted,
 	onChange,
 	toggleSection,
 	displayForm,
+	displayEditForm,
+	hideForm,
 	onSubmit
 }) {
 
@@ -18,6 +28,12 @@ function EducationForm({
 		<section className="education">
 
 			<header>
+
+				<img
+					src={icon}
+					alt="Education"
+					className="educationIcon"
+				/>
 				<h1>
 					Education
 				</h1>
@@ -28,20 +44,14 @@ function EducationForm({
 				</button>
 			</header>
 
-			{(isShown) && (
+			{((isShown) && (!isButtonClicked)) && (
 
-				<>
-
-					<button type="button" onClick={displayForm}>
-						Add Education
-					</button>
-
-				</>
-
-
+				<button type="button" onClick={displayForm}>
+					Add Education
+				</button>
 			)}
 
-			{(isButtonClicked) &&
+			{((isShown) && (isButtonClicked)) && (
 
 				<form onSubmit={onSubmit} className="education">
 
@@ -98,7 +108,7 @@ function EducationForm({
 					</div>
 
 					<div className="btnsContainer">
-						<button type="button">
+						<button type="button" onClick={hideForm}>
 							Cancel
 						</button>
 
@@ -108,13 +118,16 @@ function EducationForm({
 					</div>
 				</form>
 
-			}
-
-			{(isSubmitted) && (
-				<EducationList
-					list={education}
-				/>
 			)}
+
+			{
+				(isSubmitted) && (
+					<EducationList
+						list={education}
+					/>
+				)}
+
+
 
 		</section>
 

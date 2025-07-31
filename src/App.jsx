@@ -56,7 +56,7 @@ function App() {
 	const [
 		currentEducationID,
 		setCurrentEducationID
-	] = useState(null);
+	] = useState("");
 
 	//===================================================================
 
@@ -77,6 +77,16 @@ function App() {
 	);
 
 	//===================================================================
+
+	const [
+		isEducationItemHidden,
+		setIsEducationItemHidden
+	] = useState(
+		false
+	);
+
+	//===================================================================
+
 
 	const [
 		work,
@@ -260,9 +270,8 @@ function App() {
 			);
 
 			setCurrentEducationID(
-				null
+				""
 			);
-
 
 		} // try
 
@@ -276,6 +285,21 @@ function App() {
 	} // submitForm()
 
 	//===================================================================
+
+
+	function hideEducationForm(event) {
+
+		event.preventDefault();
+
+		const message =
+			"The form has been canceled.";
+
+		alert(message);
+
+	} // hideEducationForm()
+
+	//===================================================================
+
 
 	return (
 
@@ -293,6 +317,7 @@ function App() {
 					isButtonClicked={isAddEducationBtnClicked}
 					isShown={isEducationSectionShown}
 					displayForm={displayEducationForm}
+					hideForm={hideEducationForm}
 					onChange={handleEducationChange}
 					onSubmit={submitEducationForm}
 					isSubmitted={isEducationFormSubmitted}

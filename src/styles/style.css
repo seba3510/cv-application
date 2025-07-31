@@ -45,12 +45,14 @@ aside .education {
 	padding-bottom: 1em;
 }
 
-aside .personalDetails {
-	border: 3px solid red;
+.educationIcon {
+	width: 10%;
+	margin-top: 30px;
 }
 
-form>.personalDetails>header,
-section.education>header,
+
+
+aside .education>header,
 form .work>header {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
@@ -63,11 +65,18 @@ form .work>header {
 	flex-direction: var(--flex-column);
 }
 
-form.education button[type="button"],
-form.work button[type="button"] {
+section.education header button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
 	cursor: var(--btn-cursor);
+	background: none;
+	border: none;
+	font-weight: 600;
+	font-size: 1.3rem;
+}
+
+form.education button[type="submit"] {
+	margin-top: 30px;
 }
 
 button[type="submit"] {
@@ -85,11 +94,13 @@ form.education .btnsContainer {
 	padding: 0.5em;
 }
 
+
 .resume {
 	grid-area: resume;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 200px 1fr;
+	grid-template-rows: auto 1fr;
+	/* grid-template-rows: 200px 1fr; */
 	grid-template-areas:
 		"personalDetails"
 		"education"
@@ -139,7 +150,19 @@ aside .btnsContainer:last-child {
 	flex-direction: var(--flex-column);
 	justify-content: flex-start;
 	align-items: center;
-	border: 5px solid red;
+}
+
+aside .education header {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.education [type="button"] {
+	cursor: pointer;
+	margin-top: 30px;
 }
 
 .resume .education .container {
@@ -147,13 +170,11 @@ aside .btnsContainer:last-child {
 	grid-template-columns: repeat(2, 1fr);
 	justify-content: center;
 	align-items: center;
-	border: 3px solid blue;
 }
 
 .resume .education .school {
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
-	border: 3px solid red;
 	align-items: center;
 }
 
@@ -162,7 +183,7 @@ aside .btnsContainer:last-child {
 	flex-direction: var(--flex-row);
 	justify-content: space-evenly;
 	align-items: center;
-	border: 4px solid blue;
+	cursor: pointer;
 }
 
 .educationItem img {
