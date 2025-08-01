@@ -17,7 +17,6 @@ function EducationForm({
 	onChange,
 	toggleSection,
 	displayForm,
-	hideForm,
 	onSubmit
 }) {
 
@@ -106,10 +105,6 @@ function EducationForm({
 					</div>
 
 					<div className="btnsContainer">
-						<button type="button" onClick={hideForm}>
-							Cancel
-						</button>
-
 						<button type="submit">
 							Save
 						</button>

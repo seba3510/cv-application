@@ -126,7 +126,6 @@ function App() {
 
 	//===================================================================
 
-
 	const [
 		currentWorkID,
 		setCurrentWorkID
@@ -162,7 +161,7 @@ function App() {
 	//===================================================================
 
 	function toggleEducationSection() {
-
+		7
 		setIsEducationSectionShown(
 			(prev) =>
 				(!prev)
@@ -213,7 +212,6 @@ function App() {
 				}); // map()
 
 			} // if
-
 
 			const newEntry = {
 				id: crypto.randomUUID(),
@@ -336,10 +334,7 @@ function App() {
 
 		event.preventDefault();
 
-		const message =
-			"The form has been canceled.";
-
-		alert(message);
+		return;
 
 	} // hideEducationForm()
 
@@ -351,10 +346,13 @@ function App() {
 			true
 		);
 
+		setIsWorkFormShown(
+			true
+		);
+
 	} // displayWorkForm()
 
 	//===================================================================
-
 
 	function submitWorkForm(event) {
 
@@ -381,6 +379,9 @@ function App() {
 	} // submitWorkForm()
 
 	//===================================================================
+
+	//===================================================================
+
 
 	return (
 
@@ -425,7 +426,7 @@ function App() {
 					)}
 
 					{(isWorkSectionShown)
-						&& (!isAddWorkBtnClicked) && (
+						&& (!isWorkFormShown) && (
 
 							<button type="button" onClick={displayWorkForm}>
 								Add Experience
@@ -433,13 +434,14 @@ function App() {
 
 						)}
 
-					{(isWorkSectionShown) && (
-						<ExperienceForm
-							array={work}
-							onChange={handleWorkChange}
-							onSubmit={submitWorkForm}
-						/>
-					)}
+					{(isWorkSectionShown &&
+						(isAddWorkBtnClicked)) && (
+							<ExperienceForm
+								array={work}
+								onChange={handleWorkChange}
+								onSubmit={submitWorkForm}
+							/>
+						)}
 
 				</section>
 

@@ -74,10 +74,6 @@ function ExperienceForm({
 			</div>
 
 			<div className="btnsContainer">
-				<button type="button">
-					Cancel
-				</button>
-
 				<button type="submit">
 					Save
 				</button>
