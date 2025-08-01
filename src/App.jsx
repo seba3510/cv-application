@@ -115,6 +115,15 @@ function App() {
 	//===================================================================
 
 	const [
+		isWorkFormShown,
+		setIsWorkFormShown
+	] = useState(
+		false
+	);
+
+	//===================================================================
+
+	const [
 		currentWorkID,
 		setCurrentWorkID
 	] = useState("");
@@ -337,6 +346,23 @@ function App() {
 
 	//===================================================================
 
+	function displayWorkForm() {
+
+		setIsWorkFormShown(
+			true
+		);
+
+		console.log(
+			"Hello, World!"
+		);
+
+		return;
+
+	} // displayWorkForm()
+
+	//===================================================================
+
+
 	function submitWorkForm(event) {
 
 		try {
@@ -361,7 +387,7 @@ function App() {
 
 	return (
 
-		<div className="wrapper">
+		<>
 			<Sidebar>
 
 				<PersonalDetailsForm
@@ -395,14 +421,20 @@ function App() {
 						</button>
 					</header>
 
+
 					{(isWorkSectionShown) && (
 
+						<button type="button" onClick={displayWorkForm}>
+							Add Experience
+						</button>
+
+					)}
+
+					{(isWorkFormShown) && (
 						<ExperienceForm
-							isSectionShown={isWorkSectionShown}
 							onChange={handleWorkChange}
 							onSubmit={submitWorkForm}
 						/>
-
 					)}
 				</section>
 
@@ -415,7 +447,7 @@ function App() {
 			/>
 
 
-		</div>
+		</>
 
 	);
 

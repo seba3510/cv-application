@@ -5,14 +5,15 @@
 	--flex-column: column;
 }
 
-.wrapper {
+#root {
 	display: grid;
 	grid-template-columns: minmax(350px, 400px) 1fr;
 	grid-template-areas: "aside resume";
 }
 
 body {
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 aside,
@@ -37,7 +38,8 @@ form {
 }
 
 aside .personalDetails,
-aside .education {
+aside .education,
+aside .experience {
 	display: var(--flex-display);
 	flex-direction: var(--flex-column);
 	justify-content: center;
@@ -50,10 +52,8 @@ aside .education {
 	margin-top: 30px;
 }
 
-
-
 aside .education>header,
-form .work>header {
+aside .work>header {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
 	justify-content: center;
@@ -65,7 +65,8 @@ form .work>header {
 	flex-direction: var(--flex-column);
 }
 
-section.education header button[type="button"] {
+.education header button[type="button"],
+.experience header button[type="button"] {
 	margin-left: 1em;
 	margin-top: 1.3em;
 	cursor: var(--btn-cursor);
@@ -75,15 +76,11 @@ section.education header button[type="button"] {
 	font-size: 1.3rem;
 }
 
-form.education button[type="submit"] {
-	margin-top: 30px;
-}
-
 button[type="submit"] {
 	align-self: center;
-	padding: 0.3em;
-	margin-top: 20px;
 	cursor: var(--btn-cursor);
+	margin-top: 30px;
+	padding: 0.2em;
 }
 
 form.education .btnsContainer {
@@ -94,13 +91,11 @@ form.education .btnsContainer {
 	padding: 0.5em;
 }
 
-
 .resume {
 	grid-area: resume;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: auto 1fr;
-	/* grid-template-rows: 200px 1fr; */
 	grid-template-areas:
 		"personalDetails"
 		"education"
@@ -112,7 +107,6 @@ form.education .btnsContainer {
 .resume h1:first-child {
 	margin-top: 0;
 	text-align: center;
-	/* height: 100%; */
 }
 
 .resume .personalDetails {
@@ -136,6 +130,7 @@ form.education .btnsContainer {
 	justify-content: space-evenly;
 }
 
+/* 
 aside .btnsContainer:last-child {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
@@ -143,7 +138,7 @@ aside .btnsContainer:last-child {
 	align-items: center;
 	gap: 20px;
 	cursor: var(--btn-cursor);
-}
+} */
 
 .resume .education {
 	display: var(--flex-display);
@@ -160,7 +155,7 @@ aside .education header {
 	gap: 10px;
 }
 
-section.education button[type="button"] {
+button[type="button"] {
 	cursor: pointer;
 	margin-top: 30px;
 }
@@ -191,13 +186,12 @@ section.education button[type="button"] {
 	margin-top: 15px;
 }
 
-aside section.experience header {
+aside .experience header {
 	display: var(--flex-display);
 	flex-direction: var(--flex-row);
 	justify-content: center;
 	align-items: center;
 	gap: 40px;
-	border: 3px solid blue;
 }
 
 .suitcaseIcon {

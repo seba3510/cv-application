@@ -5,7 +5,7 @@ function ExperienceForm({
 
 	return (
 
-		<form className="work" onSubmit={onSubmit}>
+		<form onSubmit={onSubmit}>
 			<div className="formControl">
 				<label htmlFor="company">
 					Company
@@ -61,6 +61,16 @@ function ExperienceForm({
 				<textarea>
 
 				</textarea>
+			</div>
+
+			<div className="btnsContainer">
+				<button type="button">
+					Cancel
+				</button>
+
+				<button type="submit">
+					Save
+				</button>
 			</div>
 
 		</form>
