@@ -32,6 +32,17 @@ import {
 
 //==============================================================
 
+import {
+	ExperienceForm
+} from "./components/forms/ExperienceForm.jsx";
+
+//==============================================================
+
+import suitcaseIcon
+	from "./assets/icons/suitcase.png";
+
+//==============================================================
+
 function App() {
 
 	const [
@@ -79,48 +90,40 @@ function App() {
 	//===================================================================
 
 	const [
-		isEducationItemHidden,
-		setIsEducationItemHidden
-	] = useState(
-		false
-	);
-
-	//===================================================================
-
-
-	const [
-		work,
-		setWork
-	] = useState({
-		id: crypto.randomUUID(),
-		company: "",
-		title: "",
-		responsibilities: ""
-	});
-
-	//===================================================================
-
-	const [
-		areDetailsShown,
-		setAreDetailsShown
-	] = useState(
-		false
-	);
-
-	//===================================================================
-
-	const [
 		isEducationSectionShown,
 		setIsEducationSectionShown
 	] = useState(
 		false
 	);
 
+
 	//===================================================================
 
 	const [
-		isWorkShown,
-		setIsWorkShown
+		work,
+		setWork
+	] = useState([]);
+
+	//===================================================================
+
+	const [
+		isWorkSectionShown,
+		setIsWorkSectionShown
+	] = useState(
+		false);
+
+	//===================================================================
+
+	const [
+		currentWorkID,
+		setCurrentWorkID
+	] = useState("");
+
+	//===================================================================
+
+	const [
+		isWorkFormSubmitted,
+		setIsWorkFormSubmitted
 	] = useState(
 		false
 	);
@@ -144,17 +147,6 @@ function App() {
 		);
 
 	} // handleDetailsChange()
-
-	//===================================================================
-
-	function toggleDetailsSection() {
-
-		setAreDetailsShown(
-			(prev) =>
-				(!prev)
-		);
-
-	} // toggleDetailsSection()
 
 	//===================================================================
 
@@ -231,6 +223,19 @@ function App() {
 
 	//===================================================================
 
+	function toggleWorkSection() {
+
+		setIsWorkSectionShown(
+			(prev) => {
+				return (!prev)
+			}
+		);
+
+	} // toggleWorkSection()
+
+	//===================================================================
+
+
 	function handleWorkChange(event) {
 
 		const {
@@ -238,14 +243,46 @@ function App() {
 			value
 		} = event.target;
 
-		setWork(
-			(prev) => {
-				return {
-					...prev,
-					[name]: value
-				}
+		setEducation((prev) => {
 
-			});
+			if (currentEducationID) {
+
+				return prev.map((element) => {
+
+					const areIDsEqual =
+						element.id ===
+						currentWorkID;
+
+					if (areIDsEqual) {
+
+						return {
+							...element,
+							[name]: value,
+						};
+
+					} // if
+
+					return element;
+
+				}); // map()
+
+			} // if
+
+			const newEntry = {
+				id: crypto.randomUUID(),
+				[name]: value,
+			};
+
+			setCurrentWorkID(
+				newEntry.id
+			);
+
+			return [
+				...prev,
+				newEntry
+			];
+
+		});
 
 	} // handleWorkChange()
 
@@ -300,6 +337,27 @@ function App() {
 
 	//===================================================================
 
+	function submitWorkForm(event) {
+
+		try {
+
+			event.preventDefault();
+
+			setIsWorkFormSubmitted(
+				true
+			);
+
+		} // try
+
+		catch (error) {
+
+			alert(error);
+
+		} // catch
+
+	} // submitWorkForm()
+
+	//===================================================================
 
 	return (
 
@@ -322,6 +380,32 @@ function App() {
 					onSubmit={submitEducationForm}
 					isSubmitted={isEducationFormSubmitted}
 				/>
+
+				<section className="experience">
+					<header>
+						<img
+							src={suitcaseIcon}
+							alt="Suitcase"
+							className="suitcaseIcon"
+						/>
+						<h2>Experience</h2>
+
+						<button type="button" onClick={toggleWorkSection}>
+							{(isWorkSectionShown) ? "v" : "^"}
+						</button>
+					</header>
+
+					{(isWorkSectionShown) && (
+
+						<ExperienceForm
+							isSectionShown={isWorkSectionShown}
+							onChange={handleWorkChange}
+							onSubmit={submitWorkForm}
+						/>
+
+					)}
+				</section>
+
 
 			</Sidebar>
 

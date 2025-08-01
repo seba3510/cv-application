@@ -13,12 +13,13 @@ function EducationForm({
 	education,
 	isShown,
 	isButtonClicked,
-	isItemClicked,
+
+
+
 	isSubmitted,
 	onChange,
 	toggleSection,
 	displayForm,
-	displayEditForm,
 	hideForm,
 	onSubmit
 }) {
