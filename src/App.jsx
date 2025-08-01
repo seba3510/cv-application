@@ -43,6 +43,12 @@ import suitcaseIcon
 
 //==============================================================
 
+import {
+	ExperienceList
+} from "./components/ExperienceList.jsx";
+
+//==============================================================
+
 function App() {
 
 	const [
@@ -112,6 +118,14 @@ function App() {
 	] = useState(false);
 
 	//===================================================================
+
+	const [
+		isAddWorkBtnClicked,
+		setIsAddWorkBtnClicked
+	] = useState(false);
+
+	//===================================================================
+
 
 	const [
 		currentWorkID,
@@ -314,7 +328,6 @@ function App() {
 
 		} // catch
 
-
 	} // submitForm()
 
 	//===================================================================
@@ -334,7 +347,7 @@ function App() {
 
 	function displayWorkForm() {
 
-		setIsWorkFormShown(
+		setIsAddWorkBtnClicked(
 			true
 		);
 
@@ -405,22 +418,29 @@ function App() {
 						</button>
 					</header>
 
-
-					{(isWorkSectionShown) && (
-
-						<button type="button" onClick={displayWorkForm}>
-							Add Experience
-						</button>
-
-					)}
-
-					{(isWorkFormShown) && (
-						<ExperienceForm
-							onChange={handleWorkChange}
-							onSubmit={submitWorkForm}
-							array={work}
+					{(isWorkFormSubmitted) && (
+						<ExperienceList
+							list={work}
 						/>
 					)}
+
+					{(isWorkSectionShown)
+						&& (!isAddWorkBtnClicked) && (
+
+							<button type="button" onClick={displayWorkForm}>
+								Add Experience
+							</button>
+
+						)}
+
+					{(isWorkSectionShown) && (
+						<ExperienceForm
+							array={work}
+							onChange={handleWorkChange}
+							onSubmit={submitWorkForm}
+						/>
+					)}
+
 				</section>
 
 			</Sidebar>

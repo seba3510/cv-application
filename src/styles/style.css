@@ -16,6 +16,10 @@ body {
 		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+p {
+	white-space: wrap;
+}
+
 aside,
 form {
 	display: var(--flex-display);
@@ -115,7 +119,6 @@ form.education .btnsContainer {
 	justify-content: center;
 	background-color: rgb(14 55 78);
 	color: white;
-	/* padding: 2em 0 2em 0; */
 }
 
 .resume .personalDetails div {
@@ -188,5 +191,19 @@ aside .experience header {
 
 .resume .experience .company {
 	margin-left: 1em;
-	border: 3px solid red;
+}
+
+aside .experience .btnsContainer {
+	display: var(--flex-display);
+	flex-direction: var(--flex-row);
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.resume .company {
+	display: var(--flex-display);
+	flex-direction: var(--flex-column);
+	justify-content: center;
+	align-items: center;
 }

@@ -13,9 +13,6 @@ function EducationForm({
 	education,
 	isShown,
 	isButtonClicked,
-
-
-
 	isSubmitted,
 	onChange,
 	toggleSection,

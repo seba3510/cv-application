@@ -40,9 +40,9 @@ function Resume({
 							</section>
 
 							<section className="school">
-								<h1>
+								<h3>
 									{element.school}
-								</h1>
+								</h3>
 
 								<p>
 									{element.degree}
@@ -72,16 +72,20 @@ function Resume({
 							</section>
 
 							<section className="company">
-								<p>
+								<h4>
 									{element.company}
-								</p>
-							</section>
+								</h4>
 
-							<section className="responsibilities">
+								<p>
+									{element.position}
+								</p>
+
 								<p>
 									{element.responsibilities}
 								</p>
+
 							</section>
+
 						</div>
 
 					))}
