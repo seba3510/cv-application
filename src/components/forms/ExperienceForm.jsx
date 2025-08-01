@@ -1,4 +1,5 @@
 function ExperienceForm({
+	array,
 	onChange,
 	onSubmit
 }) {
@@ -14,6 +15,7 @@ function ExperienceForm({
 					type="text"
 					name="company"
 					id="company"
+					value={array.company}
 					onChange={onChange}
 				/>
 			</div>
@@ -26,6 +28,7 @@ function ExperienceForm({
 					type="text"
 					name="position"
 					id="position"
+					value={array.position}
 					onChange={onChange}
 				/>
 			</div>
@@ -38,6 +41,7 @@ function ExperienceForm({
 					type="text"
 					name="startDate"
 					id="startDate"
+					value={array.startDate}
 					onChange={onChange}
 				/>
 			</div>
@@ -50,6 +54,7 @@ function ExperienceForm({
 					type="text"
 					name="endDate"
 					id="endDate"
+					value={array.endDate}
 					onChange={onChange}
 				/>
 			</div>
@@ -58,7 +63,12 @@ function ExperienceForm({
 				<label htmlFor="responsibilities">
 					Responsibilities
 				</label>
-				<textarea>
+				<textarea
+					name="responsibilities"
+					id="responsibilities"
+					value={array.responsibilities}
+					onChange={onChange}
+				>
 
 				</textarea>
 			</div>

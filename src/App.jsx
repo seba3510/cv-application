@@ -74,28 +74,21 @@ function App() {
 	const [
 		isAddEducationBtnClicked,
 		setIsAddEducationBtnClicked
-	] = useState(
-		false
-	);
+	] = useState(false);
 
 	//===================================================================
 
 	const [
 		isEducationFormSubmitted,
 		setIsEducationFormSubmitted
-	] = useState(
-		false
-	);
+	] = useState(false);
 
 	//===================================================================
 
 	const [
 		isEducationSectionShown,
 		setIsEducationSectionShown
-	] = useState(
-		false
-	);
-
+	] = useState(false);
 
 	//===================================================================
 
@@ -109,17 +102,14 @@ function App() {
 	const [
 		isWorkSectionShown,
 		setIsWorkSectionShown
-	] = useState(
-		false);
+	] = useState(false);
 
 	//===================================================================
 
 	const [
 		isWorkFormShown,
 		setIsWorkFormShown
-	] = useState(
-		false
-	);
+	] = useState(false);
 
 	//===================================================================
 
@@ -133,9 +123,7 @@ function App() {
 	const [
 		isWorkFormSubmitted,
 		setIsWorkFormSubmitted
-	] = useState(
-		false
-	);
+	] = useState(false);
 
 	//===================================================================
 
@@ -244,7 +232,6 @@ function App() {
 
 	//===================================================================
 
-
 	function handleWorkChange(event) {
 
 		const {
@@ -252,9 +239,9 @@ function App() {
 			value
 		} = event.target;
 
-		setEducation((prev) => {
+		setWork((prev) => {
 
-			if (currentEducationID) {
+			if (currentWorkID) {
 
 				return prev.map((element) => {
 
@@ -332,7 +319,6 @@ function App() {
 
 	//===================================================================
 
-
 	function hideEducationForm(event) {
 
 		event.preventDefault();
@@ -352,12 +338,6 @@ function App() {
 			true
 		);
 
-		console.log(
-			"Hello, World!"
-		);
-
-		return;
-
 	} // displayWorkForm()
 
 	//===================================================================
@@ -371,6 +351,10 @@ function App() {
 
 			setIsWorkFormSubmitted(
 				true
+			);
+
+			setIsWorkFormShown(
+				false
 			);
 
 		} // try
@@ -434,16 +418,17 @@ function App() {
 						<ExperienceForm
 							onChange={handleWorkChange}
 							onSubmit={submitWorkForm}
+							array={work}
 						/>
 					)}
 				</section>
-
 
 			</Sidebar>
 
 			<Resume
 				details={details}
 				education={education}
+				experience={work}
 			/>
 
 

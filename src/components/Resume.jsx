@@ -1,10 +1,7 @@
-import {
-	Fragment
-} from "react";
-
 function Resume({
 	details,
-	education
+	education,
+	experience
 }) {
 
 
@@ -54,9 +51,40 @@ function Resume({
 
 						</div>
 
-					))
+					))}
+			</section>
 
-				}
+			<section className="experience">
+				<h3>Experience</h3>
+
+				{
+					experience.map((element) => (
+
+						<div className="container" key={element.id}>
+
+							<section className="date">
+								<p>
+									{
+										`${element.startDate} - ` +
+										`${element.endDate}`
+									}
+								</p>
+							</section>
+
+							<section className="company">
+								<p>
+									{element.company}
+								</p>
+							</section>
+
+							<section className="responsibilities">
+								<p>
+									{element.responsibilities}
+								</p>
+							</section>
+						</div>
+
+					))}
 			</section>
 
 		</main>
