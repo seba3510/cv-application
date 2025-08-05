@@ -37,7 +37,6 @@ function EducationForm({
 
 				<button type="button" onClick={toggleSection}>
 					{(isShown) ? "v" : "^"}
-
 				</button>
 			</header>
 

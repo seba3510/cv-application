@@ -2,13 +2,13 @@ function ExperienceList({ list }) {
 
 	return (
 		<>
-			<ul>
-				{list.map((element) => {
-					<li key={element.id}>
+			{list.map((element) => (
+				<div key={element.id}>
+					<h3>
 						{element.company}
-					</li>
-				})}
-			</ul>
+					</h3>
+				</div>
+			))}
 		</>
 	);
 

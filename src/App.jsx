@@ -46,6 +46,7 @@ import suitcaseIcon
 import {
 	ExperienceList
 } from "./components/ExperienceList.jsx";
+import { EducationList } from "./components/EducationList.jsx";
 
 //==============================================================
 
@@ -161,10 +162,11 @@ function App() {
 	//===================================================================
 
 	function toggleEducationSection() {
-		7
+
 		setIsEducationSectionShown(
-			(prev) =>
-				(!prev)
+			(prev) => {
+				return (!prev)
+			}
 		);
 
 	} // toggleEducationSection()
@@ -330,16 +332,6 @@ function App() {
 
 	//===================================================================
 
-	function hideEducationForm(event) {
-
-		event.preventDefault();
-
-		return;
-
-	} // hideEducationForm()
-
-	//===================================================================
-
 	function displayWorkForm() {
 
 		setIsAddWorkBtnClicked(
@@ -380,9 +372,6 @@ function App() {
 
 	//===================================================================
 
-	//===================================================================
-
-
 	return (
 
 		<>
@@ -399,7 +388,6 @@ function App() {
 					isButtonClicked={isAddEducationBtnClicked}
 					isShown={isEducationSectionShown}
 					displayForm={displayEducationForm}
-					hideForm={hideEducationForm}
 					onChange={handleEducationChange}
 					onSubmit={submitEducationForm}
 					isSubmitted={isEducationFormSubmitted}
@@ -443,6 +431,7 @@ function App() {
 							/>
 						)}
 
+
 				</section>
 
 			</Sidebar>
@@ -452,7 +441,6 @@ function App() {
 				education={education}
 				experience={work}
 			/>
-
 
 		</>
 
