@@ -328,7 +328,7 @@ function App() {
 
 		} // catch
 
-	} // submitForm()
+	} // submitEducationForm()
 
 	//===================================================================
 
@@ -358,6 +358,10 @@ function App() {
 
 			setIsWorkFormShown(
 				false
+			);
+
+			setCurrentWorkID(
+				""
 			);
 
 		} // try
